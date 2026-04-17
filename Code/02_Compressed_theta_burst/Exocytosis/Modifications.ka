@@ -1,0 +1,72 @@
+//Calcium dependent cAMP activation
+
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+// %mod: alarm 0.01 [true] do $ADD 10*CaGlu Ca(); repeat [true]
+
+// %mod: 'Glu_Trigger' > 0 do $ADD 5000 Glutamate();
+// %mod: 'Glu_Trigger' = 0 do $DEL |Glutamate()| Glutamate(); repeat [true]
+
+// --------------------------------------------------
+// compressed TBS (cTBS)
+// baseline: 0–1 s
+// start at T = 1 s
+// 3 trains total
+// each train = 5 bursts
+// each burst = 5 pulses at 100 Hz (0.01 s spacing)
+// burst onset interval = 0.2 s
+// train onset interval = 10 s
+// total pulses = 3 x 5 x 5 = 75
+// --------------------------------------------------
+// pulse generator
+%mod: alarm 0.01 'Burst_on' = 1 do $ADD 60 Ca(); repeat [true]
+
+// cTBS burst windows
+// train 1
+%mod: alarm 1.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.20 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.25 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.40 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.45 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.60 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.65 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.80 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.85 do $UPDATE 'Burst_on' 0;
+
+// train 2
+%mod: alarm 11.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 11.20 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.25 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 11.40 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.45 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 11.60 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.65 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 11.80 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.85 do $UPDATE 'Burst_on' 0;
+
+// train 3
+%mod: alarm 21.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 21.20 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.25 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 21.40 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.45 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 21.60 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.65 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 21.80 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.85 do $UPDATE 'Burst_on' 0;

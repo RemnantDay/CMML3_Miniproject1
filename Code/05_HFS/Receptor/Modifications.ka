@@ -1,0 +1,29 @@
+//Calcium dependent cAMP activation
+
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+// %mod: alarm 0.01 [true] do $ADD 10*CaGlu Ca(); repeat [true]
+
+// %mod: 'Glu_Trigger' > 0 do $ADD 5000 Glutamate();
+// %mod: 'Glu_Trigger' = 0 do $DEL |Glutamate()| Glutamate(); repeat [true]
+
+// --------------------------------------------------
+// High-frequency stimulation (HFS)
+// baseline: 0–1 s
+// stimulation: 1–5 s
+// observation: 6–10 s
+// 100 Hz = one pulse every 0.01 s
+// --------------------------------------------------
+
+// turn HFS on exactly at T = 1.00 s
+%mod: alarm 1 do $UPDATE 'HFS_active' 1;
+
+// turn HFS off exactly at T = 5.00 s
+%mod: alarm 5 do $UPDATE 'HFS_active' 0;
+
+// deliver one Ca pulse every 0.01 s while HFS is active
+%mod: alarm 0.01 'HFS_active' = 1 do
+  $ADD 'HFS_Ca_pulse' Ca();
+  $UPDATE 'HFS_total_pulses' 'HFS_total_pulses' + 1;
+repeat [true]

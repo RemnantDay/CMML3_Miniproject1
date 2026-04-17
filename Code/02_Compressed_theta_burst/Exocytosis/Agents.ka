@@ -1,0 +1,65 @@
+//Agents
+
+%agent: AMPAR_1(S831{u p pp ppp pppp},S845{u p pp ppp pppp},S818{u p pp ppp pppp},Open{B S M L},Glu{g0 g1 g2 g3 g4},Anchor{endo, X, EZ, PSD},K868{u0 u1 u2 u3 u4 u5},DUB,Nedd4)
+    
+%agent: AMPAR_12(S831{u p pp},S845{u p pp},S880{u p pp},Y876{u p pp},S818{u p pp},Open{B S M L},Glu{g0 g1 g2 g3 g4},Anchor{endo, X, EZ, PSD},K868{u0 u1 u2 u3 u4 u5}, K870{u0 u1 u2 u3 u4 u5}, K882 {u0 u1 u2 u3 u4 u5},DUB,Nedd4,RNF,pick1,grip,nsf)
+    
+%agent: AMPAR_23(S880{u p pp},Y876{u p pp},Open{B S M L},Glu{g0 g1 g2 g3 g4}, Anchor{endo, X, EZ, PSD}, K870{u0 u1 u2 u3 u4 u5}, K882 {u0 u1 u2 u3 u4 u5},DUB,Nedd4,RNF,pick1,grip,nsf)
+	
+    
+%agent: Glutamate()
+%agent: PSD()
+%agent: PP1(b)
+%agent: PKA(b,Active{i a})
+%agent: I1(Phos{u p},b)
+%agent: PP2A(b)
+%agent: Random()
+
+
+//Calcium signalling
+
+%agent: Ca(b)
+%agent: CaM(ck,calcium{c0 c1 c2 c3 c4}) 
+%agent: CaNAB(b,calcium{c0 c1 c2 c3 c4})		
+
+%agent: cAMP()
+%agent: AC1()
+%agent: AC2()
+%agent: PDE()
+%agent: R2C2(cAMP{c0 c1 c2 c3 c4},C{c0 c1 c2}) /*PKA subunits with diff cAMP amounts (up to 4) bound. C ARE PKA.*/
+//good to note here: cAMP binds to the R subunits. Then C's can be released and phosphorylate things
+%agent: PKA_Inhibitor(b)
+
+
+//camkii
+%agent: CK(a,b,c,d,cam,nedd4,T286{u p pp}, T305{u p pp}, T306{u p pp})       /*# CaMKII monomer*/
+%agent: PP(dp)        /*Phosphatase (for dephosphorylation)*/
+
+//Gallimore
+%agent: GRIP(ampa)
+%agent: PICK1(ampa,pkc)
+%agent: PKC(pick1, Calcium{c0 c1 c2 c3}, Location{Endo Membrane})
+%agent: NSF(ampa)
+%agent: SFK(b)
+%agent: PTPMEG(b)
+
+
+
+
+//Ubq
+
+%agent: RNF(CK{Active Inactive},E2, AMPAR, s{u0 u1})
+%agent: E1(s{u0 u1}, E2)
+%agent: E2(E1, s{u0 u1}, Nedd4, RNF)
+%agent: Nedd4(Cdomain{Active Inactive},E2, s{u0 u1}, AMPAR)
+%agent: DUB (AMPAR)
+
+//Subunits
+
+%agent: GluA1(b)
+%agent: GluA2(b)
+%agent: GluA3(b)
+    
+%agent: GluA1A1(b)
+%agent: GluA1A2(b)
+%agent: GluA2A3(b)

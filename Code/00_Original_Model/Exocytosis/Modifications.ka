@@ -1,0 +1,9 @@
+//Calcium dependent cAMP activation
+
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+%mod: alarm 0.01 [true] do $ADD 10*CaGlu Ca(); repeat [true]
+
+%mod: 'Glu_Trigger' > 0 do $ADD 5000 Glutamate();
+%mod: 'Glu_Trigger' = 0 do $DEL |Glutamate()| Glutamate(); repeat [true]

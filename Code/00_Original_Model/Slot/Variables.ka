@@ -1,0 +1,325 @@
+//Variables
+
+
+//Avogadro's Number (mol)
+%var: NA		6.022e23
+//Compartment volume
+%var: V			1e-16	//L - size of spine head in AMPS
+%var: V_PSD		1e-17
+%var: Theta		NA * V
+%var: Theta_PSD		NA * V_PSD
+	 
+//Rate constants
+	
+//#############################
+//#Synthesis/Degredation Rates#
+//#############################
+
+%var: Ubq 		0.02
+%var: Tag 		0.005
+    
+//Used to remove spare PSD slots when in LTD state
+%var: PSD_removal 	0
+
+%var: PKA_Inhib		53.99950/Theta
+
+%var: Activate_PKA 	5000000/Theta
+%var: Inhibit_PKA  	0
+%var: Glu_Remove   	600000000000/Theta
+%var: Glu_Release 	0  
+
+%var: Random_In		50000000/Theta
+%var: Random_Out 	45000000000/Theta
+    
+%var: 'endo' 	0.01
+%var: breakdown 0.01
+    
+//###########################
+//# open-close state rates  #
+//###########################
+
+%var: Bkoff	4495
+%var: Bkon	5000000/Theta
+	
+%var: BSc	0.0601
+	
+%var: p		0.5
+	
+%var: BSk4	300000
+%var: BSk3	BSk4*(BSc^p)
+%var: BSk2	BSk3*(BSc^p)
+%var: BSk1	BSk2*(BSc^p)
+%var: BSk0	BSk1*(BSc^p)
+	
+	//################
+	
+%var: Skoff	270.4
+%var: Skon	5000000/Theta
+	
+%var: SMc	0.0616
+	
+%var: SBk4	860
+%var: SBk3	SBk4/(BSc^p)
+%var: SBk2	SBk3/(BSc^p)	
+%var: SBk1	SBk2/(BSc^p)
+%var: SBk0	SBk1/(BSc^p)
+	
+%var: SMk4	20000
+%var: SMk3	SMk4*(SMc^p)
+%var: SMk2	SMk3*(SMc^p)
+%var: SMk1	SMk2*(SMc^p)
+%var: SMk0	SMk1*(SMc^p)
+	
+//################
+
+%var: Mkoff	16.65
+%var: Mkon	5000000/Theta
+	
+%var: MLc	0.069
+	
+%var: MSk4	145
+%var: MSk3	MSk4/(SMc^p)
+%var: MSk2	MSk3/(SMc^p)
+%var: MSk1	MSk2/(SMc^p)
+%var: MSk0	MSk1/(SMc^p)
+	
+%var: MLk4	50000
+%var: MLk3	MLk4*(MLc^p)
+%var: MLk2	MLk3*(MLc^p)
+%var: MLk1	MLk2*(MLc^p)
+%var: MLk0	MLk1*(MLc^p)
+	
+//################
+	
+%var: Lkoff	1.149
+%var: Lkon	5000000/Theta
+	
+%var: LMk4	691
+%var: LMk3	LMk4/(MLc^p)
+%var: LMk2	LMk3/(MLc^p)
+%var: LMk1	LMk2/(MLc^p)
+%var: LMk0	LMk1/(MLc^p)
+	
+//#####################
+//# Enzyme parameters #
+//##################### 
+    
+%var: pp1_s831_k1			874978.13/Theta
+%var: pp1_s831_k2			1.40
+%var: pp1_s831_k3			0.35
+	
+    
+%var: pp1_s845_k1			874979.80/Theta
+%var: pp1_s845_k2			0.68
+%var: pp1_s845_k3			0.17
+	
+    
+%var: pka_k1				3999888/Theta
+%var: pka_k2				24
+%var: pka_k3				6
+    
+    
+%var: camkii_k1				27777.59/Theta
+%var: camkii_k2				2
+%var: camkii_k3				0.5
+	
+    
+%var: pp2b_k1				2011825.51/Theta
+%var: pp2b_k2				8
+%var: pp2b_k3				2	
+    
+    
+//I1 control reaction parameters
+
+%var: PKA_I1_k1				6000000/Theta
+%var: PKA_I1_k2				36
+%var: PKA_I1_k3				9
+    
+%var: PP2A_I1_k1			625391/Theta
+%var: PP2A_I1_k2			8
+%var: PP2A_I1_k3			2
+    
+%var: PP2A_PP1_I1_k1			625391/Theta
+%var: PP2A_PP1_I1_k2			8
+%var: PP2A_PP1_I1_k3			2
+    
+%var: PP2B_I1_k1			34200/Theta
+%var: PP2B_I1_k2			0.14
+%var: PP2B_I1_k3			0.03
+    
+%var: PP2B_PP1_I1_k1			34200/Theta
+%var: PP2B_PP1_I1_k2			0.14
+%var: PP2B_PP1_I1_k3			0.03
+    
+//##########################
+//# Initial concentrations #
+//##########################
+%var: Basal_12				66
+%var: Basal_23				19
+
+
+%var: X_12				12
+%var: X_23				3
+
+
+%var: Glu				0
+
+%var: PKA				0
+%var: PP1				108
+%var: PSD_slots			0
+
+
+//Calcium Signalling
+%var: x 54000000/Theta
+%var: y 75000000/Theta
+
+%var: cAMP_synth 0.5
+%var: cAMP_breakdown 50000000/Theta
+%var: Ca_synth 	200
+%var: Ca_breakdown 2700000000/Theta
+
+
+//camkii
+%var: CaM_binding 0.0697		
+%var: CaM_unbinding 0.126		
+
+
+//Gallimore
+
+//AMPAR Binding Interactions at PSD and Endosome
+
+%var: ampar_grip_on			5500000/Theta
+%var: ampar_grip_off		0.3
+%var: ampar_grip_offPS		70
+
+%var: ampar_pick_on			700000/Theta 
+%var: ampar_pick_off		5
+%var: ampar_pick_onstar		28000000/Theta
+
+%var: grip_pick_on		10000000/Theta
+%var: grip_pick_off		5
+
+%var: ansf_on			1000000/Theta
+%var: ansf_off			5
+
+//AMPAR Lateral Diffusion (PSD and extrasynaptic area, X)
+
+%var: diff_psd_x		0.05
+%var: diff_x_psd		0.065
+
+//AMPAR Lateral Diffusion (Extrasynaptic X and Endocytic Zone, EZ)
+
+%var: diff_x_ez			0.05
+%var: diff_ez_x			0.0065
+
+//AMPAR Endocytosis and Exocytosis
+
+%var: ampa_endo			0.03
+%var: ampa_exo			0.045
+
+//PKC
+
+%var: pkc_act			0
+%var: pkc_deact			0.5
+
+//PICK-PKC
+
+%var: pick_pkc_on		6000000/Theta
+%var: pick_pkc_off		1
+
+//Enzymatic Reactions (Converted from Km and Kcat)
+//PKC phosphorylation of S880 on GluA2
+
+%var: pkc_k1			7057057/Theta
+%var: pkc_k2			18.8
+%var: pkc_k3			4.7
+
+
+%var: pkc_s818			186507/Theta
+
+
+//s880 Dephosphorylation
+
+%var: s880_pp2a_k1		384615/Theta
+%var: s880_pp2a_k2		2.4
+%var: s880_pp2a_k3		0.6
+
+//SFK phosphorylation of Y876 on GluA2
+
+%var: sfk_k1			14285714/Theta
+%var: sfk_k2			40
+%var: sfk_k3			10
+
+//Y876 Dephosphorylation
+
+%var: ptpmeg_k1			3525641/Theta
+%var: ptpmeg_k2			22
+%var: ptpmeg_k3			5.5
+
+
+//PKC
+%var: pkc_to_membrane	420
+%var: pkc_to_endo		8400
+
+%var: pkc_to_endo_ca	4200
+%var: pkc_to_endo_2ca	0.017
+%var: pkc_to_endo_3ca	0.0017
+
+%var: pkc_23ca	45450000/Theta	
+%var: pkc_1ca 	1111000000/Theta 
+
+%var: pkc_ca_off	1000  
+%var: pkc_ca_off_2	2
+%var: pkc_ca_off_3	0.12
+
+
+
+//Initial Concentrations
+
+%var: GRIP				80
+%var: PICK1				80
+%var: PKC				40	
+%var: SFK				40
+%var: NSF				133
+%var: PTPMEG			133
+%var: PP2A				67
+
+
+//Ubq
+
+%var: RNFCK_assoc	27777.59/Theta
+%var: RNFCK_dissoc	2
+%var: RNF_Activate	0.5
+
+%var: 'A' 6.022E14 
+%var: 'AV' 'A'*'V'
+
+%var: 'E1 activation rate' 0.01/'AV'
+%var: 'E1 deactivation rate' 0.1
+%var: 'E1 association rate' 0.01/'AV'
+%var: 'E1 dissociation rate' 0.1
+%var: 'E1 ub transfer rate' 0.2
+%var: 'E2 association rate' 0.01/'AV'
+%var: 'E2 dissociation rate' 0.1
+%var: 'E2 ub transfer rate' 0.2
+
+%var: 'E3 bind rate' 0.002/'AV'
+%var: 'E3 dissociation rate' 0.7
+%var: 'kub1' 0.002
+%var: 'kub2' 0.04
+%var: 'kub3' 0.04
+%var: 'kub4' 0.04
+%var: 'kub5' 0.04
+
+%var: 'DUB bind rate' 0.6/'AV'
+%var: 'DUB dissociation rate' 0.043
+%var: 'kdub' 0.054
+
+
+%var: 'ks' 0.08
+%var: 'kd' 0.01
+%var: 'kb' 0.0001
+
+%var: Nedd4_assoc		27777.59/Theta
+%var: Nedd4_dissoc		2
+%var: Nedd4_Activate	5

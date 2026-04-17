@@ -1,0 +1,74 @@
+//Calcium dependent cAMP activation
+
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+// %mod: alarm 0.01 [true] do $ADD 10*CaGlu Ca(); repeat [true]
+
+// %mod: 'Glu_Trigger' > 0 do $ADD 5000 Glutamate();
+// %mod: 'Glu_Trigger' = 0 do $DEL |Glutamate()| Glutamate(); repeat [true]
+
+// --------------------------------------------------
+// 3-train burst protocol (weakLTP protocol)
+// baseline: 0–1 s
+// train 1 starts at 1 s
+// each train = 5 bursts
+// each burst = 5 pulses
+// interpulse interval = 0.01 s
+// interburst onset interval = 5000 ms
+// train 2 starts 10 s after train 1 ends
+// train 3 starts 10 s after train 2 ends
+// total pulses = 75
+// --------------------------------------------------
+
+// pulse generator
+%mod: alarm 0.01 'Burst_on' = 1 do $ADD 60 Ca(); repeat [true]
+
+// wLTP burst windows
+// train 1
+%mod: alarm 1.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 6.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 6.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 11.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 11.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 16.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 16.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 21.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 21.05 do $UPDATE 'Burst_on' 0;
+
+// train 2
+%mod: alarm 31.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 31.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 36.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 36.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 41.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 41.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 46.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 46.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 51.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 51.05 do $UPDATE 'Burst_on' 0;
+
+// train 3
+%mod: alarm 61.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 61.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 66.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 66.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 71.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 71.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 76.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 76.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 81.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 81.05 do $UPDATE 'Burst_on' 0;

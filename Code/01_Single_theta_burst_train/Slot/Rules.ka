@@ -1,0 +1,784 @@
+//Rules
+
+%var:slot_degen 0
+
+PSD() -> . @ slot_degen
+
+%mod: Phos_CK_subunits > 100 do $ADD 10 PSD();
+%mod: Phos_CK_subunits > 200 do $ADD 10 PSD();
+%mod: Phos_CK_subunits > 300 do $ADD 10 PSD();
+%mod: Phos_CK_subunits > 400 do $ADD 10 PSD();
+%mod: Phos_CK_subunits > 500 do $ADD 10 PSD();
+%mod: Phos_CK_subunits > 600 do $ADD 10 PSD();
+%mod: Phos_CK_subunits < 100 do $UPDATE 'slot_degen' 0.05; repeat [true]
+%mod: Phos_CK_subunits > 500 do $UPDATE 'slot_degen' 0; repeat [true]
+
+
+//###############
+//#  GLUA1/2    #
+//###############
+	 
+//Basal-to-Small_12 
+AMPAR_12(Open{B},Glu{g0}) <-> AMPAR_12(Open{S},Glu{g0}) @ BSk0,SBk0
+AMPAR_12(Open{B},Glu{g1}) <-> AMPAR_12(Open{S},Glu{g1}) @ BSk1,SBk1
+AMPAR_12(Open{B},Glu{g2}) <-> AMPAR_12(Open{S},Glu{g2}) @ BSk2,SBk2
+AMPAR_12(Open{B},Glu{g3}) <-> AMPAR_12(Open{S},Glu{g3}) @ BSk3,SBk3
+AMPAR_12(Open{B},Glu{g4}) <-> AMPAR_12(Open{S},Glu{g4}) @ BSk4,SBk4
+    
+AMPAR_12(S831{p},Open{B},Glu{g0}) <-> AMPAR_12(S831{p},Open{S},Glu{g0}) @ 1.5*BSk0,SBk0
+AMPAR_12(S831{p},Open{B},Glu{g1}) <-> AMPAR_12(S831{p},Open{S},Glu{g1}) @ 1.5*BSk1,SBk1
+AMPAR_12(S831{p},Open{B},Glu{g2}) <-> AMPAR_12(S831{p},Open{S},Glu{g2}) @ 1.5*BSk2,SBk2
+AMPAR_12(S831{p},Open{B},Glu{g3}) <-> AMPAR_12(S831{p},Open{S},Glu{g3}) @ 1.5*BSk3,SBk3
+AMPAR_12(S831{p},Open{B},Glu{g4}) <-> AMPAR_12(S831{p},Open{S},Glu{g4}) @ 1.5*BSk4,SBk4
+    
+AMPAR_12(S831{pp},Open{B},Glu{g0}) <-> AMPAR_12(S831{pp},Open{S},Glu{g0}) @ 2*BSk0,SBk0
+AMPAR_12(S831{pp},Open{B},Glu{g1}) <-> AMPAR_12(S831{pp},Open{S},Glu{g1}) @ 2*BSk1,SBk1
+AMPAR_12(S831{pp},Open{B},Glu{g2}) <-> AMPAR_12(S831{pp},Open{S},Glu{g2}) @ 2*BSk2,SBk2
+AMPAR_12(S831{pp},Open{B},Glu{g3}) <-> AMPAR_12(S831{pp},Open{S},Glu{g3}) @ 2*BSk3,SBk3
+AMPAR_12(S831{pp},Open{B},Glu{g4}) <-> AMPAR_12(S831{pp},Open{S},Glu{g4}) @ 2*BSk4,SBk4
+	
+//Small-to-Medium_12
+AMPAR_12(Open{S},Glu{g0}) <-> AMPAR_12(Open{M},Glu{g0}) @ SMk0,MSk0
+AMPAR_12(Open{S},Glu{g1}) <-> AMPAR_12(Open{M},Glu{g1}) @ SMk1,MSk1
+AMPAR_12(Open{S},Glu{g2}) <-> AMPAR_12(Open{M},Glu{g2}) @ SMk2,MSk2
+AMPAR_12(Open{S},Glu{g3}) <-> AMPAR_12(Open{M},Glu{g3}) @ SMk3,MSk3
+AMPAR_12(Open{S},Glu{g4}) <-> AMPAR_12(Open{M},Glu{g4}) @ SMk4,MSk4
+
+AMPAR_12(S831{p},Open{S},Glu{g0}) <-> AMPAR_12(S831{p},Open{M},Glu{g0}) @ 1.5*SMk0,MSk0
+AMPAR_12(S831{p},Open{S},Glu{g1}) <-> AMPAR_12(S831{p},Open{M},Glu{g1}) @ 1.5*SMk1,MSk1
+AMPAR_12(S831{p},Open{S},Glu{g2}) <-> AMPAR_12(S831{p},Open{M},Glu{g2}) @ 1.5*SMk2,MSk2
+AMPAR_12(S831{p},Open{S},Glu{g3}) <-> AMPAR_12(S831{p},Open{M},Glu{g3}) @ 1.5*SMk3,MSk3
+AMPAR_12(S831{p},Open{S},Glu{g4}) <-> AMPAR_12(S831{p},Open{M},Glu{g4}) @ 1.5*SMk4,MSk4
+    
+AMPAR_12(S831{pp},Open{S},Glu{g0}) <-> AMPAR_12(S831{pp},Open{M},Glu{g0}) @ 2*SMk0,MSk0
+AMPAR_12(S831{pp},Open{S},Glu{g1}) <-> AMPAR_12(S831{pp},Open{M},Glu{g1}) @ 2*SMk1,MSk1
+AMPAR_12(S831{pp},Open{S},Glu{g2}) <-> AMPAR_12(S831{pp},Open{M},Glu{g2}) @ 2*SMk2,MSk2
+AMPAR_12(S831{pp},Open{S},Glu{g3}) <-> AMPAR_12(S831{pp},Open{M},Glu{g3}) @ 2*SMk3,MSk3
+AMPAR_12(S831{pp},Open{S},Glu{g4}) <-> AMPAR_12(S831{pp},Open{M},Glu{g4}) @ 2*SMk4,MSk4
+    
+    
+//Medium-to-Large_12
+AMPAR_12(Open{M},Glu{g0}) <-> AMPAR_12(Open{L},Glu{g0}) @ MLk0,LMk0
+AMPAR_12(Open{M},Glu{g1}) <-> AMPAR_12(Open{L},Glu{g1}) @ MLk1,LMk1
+AMPAR_12(Open{M},Glu{g2}) <-> AMPAR_12(Open{L},Glu{g2}) @ MLk2,LMk2
+AMPAR_12(Open{M},Glu{g3}) <-> AMPAR_12(Open{L},Glu{g3}) @ MLk3,LMk3
+AMPAR_12(Open{M},Glu{g4}) <-> AMPAR_12(Open{L},Glu{g4}) @ MLk4,LMk4
+    
+AMPAR_12(S831{p},Open{M},Glu{g0}) <-> AMPAR_12(S831{p},Open{L},Glu{g0}) @ 1.5*MLk0,LMk0
+AMPAR_12(S831{p},Open{M},Glu{g1}) <-> AMPAR_12(S831{p},Open{L},Glu{g1}) @ 1.5*MLk1,LMk1
+AMPAR_12(S831{p},Open{M},Glu{g2}) <-> AMPAR_12(S831{p},Open{L},Glu{g2}) @ 1.5*MLk2,LMk2
+AMPAR_12(S831{p},Open{M},Glu{g3}) <-> AMPAR_12(S831{p},Open{L},Glu{g3}) @ 1.5*MLk3,LMk3
+AMPAR_12(S831{p},Open{M},Glu{g4}) <-> AMPAR_12(S831{p},Open{L},Glu{g4}) @ 1.5*MLk4,LMk4
+   
+AMPAR_12(S831{pp},Open{M},Glu{g0}) <-> AMPAR_12(S831{pp},Open{L},Glu{g0}) @ 2*MLk0,LMk0
+AMPAR_12(S831{pp},Open{M},Glu{g1}) <-> AMPAR_12(S831{pp},Open{L},Glu{g1}) @ 2*MLk1,LMk1
+AMPAR_12(S831{pp},Open{M},Glu{g2}) <-> AMPAR_12(S831{pp},Open{L},Glu{g2}) @ 2*MLk2,LMk2
+AMPAR_12(S831{pp},Open{M},Glu{g3}) <-> AMPAR_12(S831{pp},Open{L},Glu{g3}) @ 2*MLk3,LMk3
+AMPAR_12(S831{pp},Open{M},Glu{g4}) <-> AMPAR_12(S831{pp},Open{L},Glu{g4}) @ 2*MLk4,LMk4
+    
+ 	
+
+	
+//######################
+//#	Glutamate Binding #
+//#####################
+	
+//Glu_bind_basal_12
+AMPAR_12(Open{B},Glu{g0},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{B},Glu{g1},Anchor{PSD}),. @ 4*Bkon,Bkoff
+AMPAR_12(Open{B},Glu{g1},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{B},Glu{g2},Anchor{PSD}),. @ 3*Bkon,2*Bkoff
+AMPAR_12(Open{B},Glu{g2},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{B},Glu{g3},Anchor{PSD}),. @ 2*Bkon,3*Bkoff
+AMPAR_12(Open{B},Glu{g3},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{B},Glu{g4},Anchor{PSD}),. @ Bkon,4*Bkoff
+	
+//Glu_bind_small_12 
+AMPAR_12(Open{S},Glu{g0},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{S},Glu{g1},Anchor{PSD}),. @ 4*Skon,Skoff
+AMPAR_12(Open{S},Glu{g1},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{S},Glu{g2},Anchor{PSD}),. @ 3*Skon,2*Skoff
+AMPAR_12(Open{S},Glu{g2},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{S},Glu{g3},Anchor{PSD}),. @ 2*Skon,3*Skoff
+AMPAR_12(Open{S},Glu{g3},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{S},Glu{g4},Anchor{PSD}),. @ Skon,4*Skoff
+	
+//Glu_bind_medium_12 
+AMPAR_12(Open{M},Glu{g0},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{M},Glu{g1},Anchor{PSD}),. @ 4*Mkon,Mkoff
+AMPAR_12(Open{M},Glu{g1},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{M},Glu{g2},Anchor{PSD}),. @ 3*Mkon,2*Mkoff
+AMPAR_12(Open{M},Glu{g2},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{M},Glu{g3},Anchor{PSD}),. @ 2*Mkon,3*Mkoff
+AMPAR_12(Open{M},Glu{g3},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{M},Glu{g4},Anchor{PSD}),. @ Mkon,4*Mkoff
+	
+//Glu_bind_large_12 
+AMPAR_12(Open{L},Glu{g0},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{L},Glu{g1},Anchor{PSD}),. @ 4*Lkon,Lkoff
+AMPAR_12(Open{L},Glu{g1},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{L},Glu{g2},Anchor{PSD}),. @ 3*Lkon,2*Lkoff
+AMPAR_12(Open{L},Glu{g2},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{L},Glu{g3},Anchor{PSD}),. @ 2*Lkon,3*Lkoff
+AMPAR_12(Open{L},Glu{g3},Anchor{PSD}),Glutamate() <-> AMPAR_12(Open{L},Glu{g4},Anchor{PSD}),. @ Lkon,4*Lkoff
+	
+	
+//###############
+//#Phos/Dephos	#
+//###############
+	
+//PP1_dephos
+//S845
+AMPAR_12(S845{p}[.]),PP1(b[.]) <-> AMPAR_12(S845{p}[1]),PP1(b[1]) 							@ pp1_s845_k1,pp1_s845_k2
+AMPAR_12(S845{p/u}[1/.]),PP1(b[1/.])											@ pp1_s845_k3
+   
+AMPAR_12(S845{pp}[.]),PP1(b[.]) <-> AMPAR_12(S845{pp}[1]),PP1(b[1]) 							@ pp1_s845_k1,pp1_s845_k2
+AMPAR_12(S845{pp/p}[1/.]),PP1(b[1/.]) 											@ pp1_s845_k3
+    
+//S831
+AMPAR_12(S831{p}[.]),PP1(b[.]) <-> AMPAR_12(S831{p}[1]),PP1(b[1]) 							@ pp1_s831_k1,pp1_s831_k2
+AMPAR_12(S831{p/u}[1/.]),PP1(b[1/.]) 											@ pp1_s831_k3
+    
+AMPAR_12(S831{pp}[.]),PP1(b[.]) <-> AMPAR_12(S831{pp}[1]),PP1(b[1]) 							@ pp1_s831_k1,pp1_s831_k2
+AMPAR_12(S831{pp/p}[1/.]),PP1(b[1/.])				 							@ pp1_s831_k3
+	
+    
+    
+//PKA_phos
+AMPAR_12(S845{u}[.]),PKA(b[.],Active{a}) <-> AMPAR_12(S845{u}[1]),PKA(b[1],Active{a}) 		@ pka_k1,pka_k2
+AMPAR_12(S845{u/p}[1/.]),PKA(b[1/.],Active{a})					 		@ pka_k3
+    
+AMPAR_12(S845{p}[.]),PKA(b[.],Active{a}) <-> AMPAR_12(S845{p}[1]),PKA(b[1],Active{a}) 		@ pka_k1,pka_k2
+AMPAR_12(S845{p/pp}[1/.]),PKA(b[1/.],Active{a})							@ pka_k3
+    
+//CAMKII_phos
+AMPAR_12(S831{u}[.]),CK(T286{p}[.]) <-> AMPAR_12(S831{u}[1]),CK(T286{p}[1])					@camkii_k1,camkii_k2
+AMPAR_12(S831{u/p}[1/.]),CK(T286{p}[1/.])									@camkii_k3
+
+AMPAR_12(S831{p}[.]),CK(T286{p}[.]) <-> AMPAR_12(S831{p}[1]),CK(T286{p}[1])					@camkii_k1,camkii_k2
+AMPAR_12(S831{p/pp}[1/.]),CK(T286{p}[1/.]) 									@camkii_k3  
+
+//PP2B_dephos
+AMPAR_12(S845{p}[.]),CaM(calcium{c4}[1]),CaNAB(b[.],calcium{c4}[1]) <-> AMPAR_12(S845{p}[2]),CaM(calcium{c4}[1]),CaNAB(b[2],calcium{c4}[1]) 	@ pp2b_k1,pp2b_k2
+AMPAR_12(S845{p/u}[2/.]),CaM(calcium{c4}[1]),CaNAB(b[2/.],calcium{c4}[1])						@ pp2b_k3
+
+AMPAR_12(S845{pp}[.]),CaM(calcium{c4}[1]),CaNAB(b[.],calcium{c4}[1]) <-> AMPAR_12(S845{pp}[2]),CaM(calcium{c4}[1]),CaNAB(b[2],calcium{c4}[1]) 	@ pp2b_k1,pp2b_k2
+AMPAR_12(S845{pp/p}[2/.]),CaM(calcium{c4}[1]),CaNAB(b[2/.],calcium{c4}[1])						@ pp2b_k3  
+
+
+
+
+//PKC_phos_S818 (experimental) - having to assume same rate as S880_phos
+AMPAR_12(S818{u}[.]),PKC(pick1[.],Calcium{c3}[.]) <-> AMPAR_12(S818{u}[1]),PKC(pick1[.],Calcium{c3}[1]) 	@ pkc_s818,pkc_k2
+AMPAR_12(S818{u/p}[1/.]),PKC(pick1[.],Calcium{c3}[1/.])							@ pkc_k3
+
+AMPAR_12(S818{p}[.]),PKC(pick1[.],Calcium{c3}[.]) <-> AMPAR_12(S818{p}[1]),PKC(pick1[.],Calcium{c3}[1]) 	@ pkc_k1,pkc_k2
+AMPAR_12(S818{p/pp}[1/.]),PKC(pick1[.],Calcium{c3}[1/.])							@ pkc_k3
+    
+
+//PP2A_dephos (experimental) - assume same rate as S880_dephos
+		
+AMPAR_12(S818{p}[.]),PP2A(b[.]) <-> AMPAR_12(S818{p}[1]),PP2A(b[1]) 	@ s880_pp2a_k1,s880_pp2a_k2
+AMPAR_12(S818{p/u}[1/.]),PP2A(b[1/.])					@ s880_pp2a_k3
+	
+AMPAR_12(S818{pp}[.]),PP2A(b[.]) <-> AMPAR_12(S818{pp}[1]),PP2A(b[1]) 	@ s880_pp2a_k1,s880_pp2a_k2
+AMPAR_12(S818{pp/p}[1/.]),PP2A(b[1/.])					@ s880_pp2a_k3
+
+	
+//##################
+//#  Act/Inhib     #
+//##################
+	
+PP1(b[1/.]),I1(Phos{u}[1/.]) 	@ 0.1
+	
+PP1(b[.]),I1(Phos{p}[.]) <-> PP1(b[1]),I1(Phos{p}[1])	@ 449980000/Theta,0.1
+    
+
+	
+I1(Phos{p}[.]),PP2A(b[.]) <-> I1(Phos{p}[2]),PP2A(b[2]) @ PP2A_I1_k1,PP2A_I1_k2
+I1(Phos{p/u}[2/.]),PP2A(b[2/.])  			@ PP2A_I1_k3
+	
+PP1(b[1]),I1(Phos{p}[1]b[.]),PP2A(b[.]) <-> PP1(b[1]),I1(Phos{p}[1],b[3]),PP2A(b[3])  	@ PP2A_PP1_I1_k1,PP2A_PP1_I1_k2
+PP1(b[1]),I1(Phos{p/u}[1],b[3/.]),PP2A(b[3/.]) 						@ PP2A_PP1_I1_k3
+    
+    
+
+I1(Phos{u}[.]),PKA(Active{a}[.]) <-> I1(Phos{u}[1]),PKA(Active{a}[1])	@ PKA_I1_k1,PKA_I1_k2
+I1(Phos{u/p}[1/.]),PKA(Active{a}[1/.])					@ PKA_I1_k3  
+    
+
+I1(Phos{p}[.]),CaM(calcium{c4}[1]),CaNAB(b[.],calcium{c4}[1]) <-> I1(Phos{p}[4]),CaM(calcium{c4}[1]),CaNAB(b[4],calcium{c4}[1])	@ PP2B_I1_k1,PP2B_I1_k2
+I1(Phos{p/u}[4/.]),CaM(calcium{c4}[1]),CaNAB(b[4/.],calcium{c4}[1])				@ PP2B_I1_k3 
+    
+PP1(b[1]),I1(Phos{p}[1],b[.]),CaM(calcium{c4}[2]),CaNAB(b[.],calcium{c4}[2]) <-> PP1(b[1]),I1(Phos{p}[1],b[5]),CaM(calcium{c4}[2]),CaNAB(b[5],calcium{c4}[2])		@ PP2B_PP1_I1_k1,PP2B_PP1_I1_k2
+PP1(b[1]),I1(Phos{p/u}[1],b[5/.]),CaM(calcium{c4}[2]),CaNAB(b[5/.],calcium{c4}[2])						 		@ PP2B_PP1_I1_k3
+    
+ 
+
+//Glutamate Release Mechanism
+
+//Designed to release glutamate in a physiologically relevant manner.
+//Diffuse increase in receptors available to simulate movement in cleft.
+//After 0.5ms, removal is activated.
+//Addition and removal complete by 1ms
+
+. <-> Random() @ Random_In, Random_Out
+
+. <-> Glutamate() @ Glu_Release, Glu_Remove
+
+
+
+
+//Calcium Signalling
+
+//cAMP binding to regulatory subunits (proto-PKA)
+R2C2(cAMP{c0},C{c2}),cAMP() <-> R2C2(cAMP{c1},C{c2}),. @ x,33
+R2C2(cAMP{c1},C{c2}),cAMP() <-> R2C2(cAMP{c2},C{c2}),. @ x,33
+R2C2(cAMP{c2},C{c2}),cAMP() <-> R2C2(cAMP{c3},C{c2}),. @ y,110
+R2C2(cAMP{c3},C{c2}),cAMP() <-> R2C2(cAMP{c4},C{c2}),. @ y,32.5
+
+//Activation of PKA
+R2C2(cAMP{c4},C{c2}),. <-> R2C2(cAMP{c4},C{c1}),PKA(Active{a}) @ 60,(18000000/Theta)
+R2C2(cAMP{c4},C{c1}),. <-> R2C2(cAMP{c4},C{c0}),PKA(Active{a}) @ 60,(18000000/Theta)
+
+//Control of PKA
+PKA(b[.],Active{a}),PKA_Inhibitor(b[.]) <-> PKA(b[1],Active{i}),PKA_Inhibitor(b[1]) @ (60000000/Theta),1
+
+
+//Ca binding to CAM
+Ca(),CaM(calcium{c0}) <-> .,CaM(calcium{c1}) @ (720000000/Theta),72
+Ca(),CaM(calcium{c1}) <-> .,CaM(calcium{c2}) @ (720000000/Theta),72  
+Ca(),CaM(calcium{c2}) <-> .,CaM(calcium{c3}) @ (36000000/Theta),10
+Ca(),CaM(calcium{c3}) <-> .,CaM(calcium{c4}) @ (4650000/Theta),10
+
+// CK-bound CaM - same on-rates, slower C-lobe off-rates
+Ca(),CaM(ck[_],calcium{c0}) <-> .,CaM(ck[_],calcium{c1}) @ (720000000/Theta),72
+Ca(),CaM(ck[_],calcium{c1}) <-> .,CaM(ck[_],calcium{c2}) @ (1800000000/Theta),36
+Ca(),CaM(ck[_],calcium{c2}) <-> .,CaM(ck[_],calcium{c3}) @ (36000000/Theta),1
+Ca(),CaM(ck[_],calcium{c3}) <-> .,CaM(ck[_],calcium{c4}) @ (4650000/Theta),0.5
+
+//Ca binding to CaNAB (PP2B)
+//Slightly simplified- CaMCa4 with CaNABCa4 leads to PP2B(active)
+Ca(),CaNAB(calcium{c0}) <-> .,CaNAB(calcium{c1}) @ (10008000000/Theta),1
+Ca(),CaNAB(calcium{c1}) <-> .,CaNAB(calcium{c2}) @ (10008000000/Theta),1
+Ca(),CaNAB(calcium{c2}) <-> .,CaNAB(calcium{c3}) @ (3600100/Theta),1
+Ca(),CaNAB(calcium{c3}) <-> .,CaNAB(calcium{c4}) @ (3600100/Theta),1
+CaM(calcium{c4}[.]),CaNAB(calcium{c4}[.]) <-> CaM(calcium{c4}[1]),CaNAB(calcium{c4}[1]) @ (599994000/Theta),1
+
+cAMP()- @ cAMP_breakdown
+cAMP()+ @ cAMP_synth
+
+Ca()+ @ Ca_synth
+Ca()- @ Ca_breakdown
+
+
+//camkii
+
+// Binding of CaM to CaMKII
+CaM(ck[.],calcium{c4}), CK(cam[.]) <->  CaM(ck[1],calcium{c4}), CK(cam[1]) @ CaM_binding,CaM_unbinding
+CaM(ck[1/.],calcium{#}), CK(cam[1/.]) @ CaM_unbinding
+
+//Autophosphorylation of CaMKII by neighbouring unit
+CaM(ck[1]calcium{c4}), CK(b[2],T286{p}), CK(cam[1],a[2],T286{u/p}) @ 30 /*Ca2+/Calmodulin bound/not bound, P*/
+
+CaM(ck[1],calcium{c4}), CaM(ck[2],calcium{c4}), CK(cam[1],b[3],T286{u}), CK(cam[2],a[3],T286{u/p}) @ 30 /*Calmodulin bound, not P*/
+
+//Interhexamer autophosphorylation (one way)
+//CaM(ck[1],calcium{c4}), CK(c[2],T286{p}), CK(cam[1],d[2],T286{u}) ->  CaM(ck[1],calcium{c4}), CK(c[2],T286{p}), CK(cam[1],d[2],T286{p}) @ 20 /*Calmodulin bound/not bound, P*/
+
+//CaM(ck[1],calcium{c4}), CaM(ck[2],calcium{c4}), CK(cam[1],c[3],T286{u}), CK(cam[2],d[3],T286{u}) -> CaM(ck[1],calcium{c4}), CaM(ck[2],calcium{c4}), CK(cam[1],c[3],T286{u}), CK(cam[2],d[3],T286{p})  @ 20 /*Calmodulin bound, not P*/
+
+//Interhexamer autophosphorylation (both ways)
+//CaM(ck[1]), CK(d[2],T286{p}), CK(cam[1],c[2],T286{u}) ->  CaM(ck[1]), CK(d[2],T286{p}), CK(cam[1],c[2],T286{p}) @ 20 /*Ca2+/Calmodulin bound/not bound, P*/
+
+//CaM(ck[1]), CaM(ck[2]), CK(cam[1],d[3],T286{u}), CK(cam[2],c[3],T286{u}) -> CaM(ck[1]), CaM(ck[2]), CK(cam[1],d[3],T286{u}), CK(cam[2],c[3],T286{p})  @ 20 /*Calmodulin bound, not P*/*/
+
+//Bidirectional autophosphorylation 
+CaM(ck[1]), CK(a[2],T286{p}), CK(cam[1],b[2],T286{u}) ->  CaM(ck[1]), CK(a[2],T286{p}), CK(cam[1],b[2],T286{p}) @ 30 /*Ca2+/Calmodulin bound/not bound, P */
+
+CaM(ck[1]), CaM(ck[2]), CK(cam[1],a[3],T286{u}), CK(cam[2],b[3],T286{u}) -> CaM(ck[1]), CaM(ck[2]), CK(cam[1],a[3],T286{u}), CK(cam[2],b[3],T286{p})  @ 30 /*Calmodulin bound, not P*/
+
+
+// 1: Activated CaMKII binds to PP
+CK(cam[.],T286{p}[.]), PP1(b[.]) <-> CK(cam[.],T286{p}[1]), PP1(b[1]) @ 3.43E+05/Theta, 1.4
+
+
+// 2: PP dephosphorylates CaMKII
+CK(cam[.],T286{p/u}[1/.]), PP1(b[1/.]) @ 0.35
+
+
+
+//Gallimore
+
+//AMPAR binding interactions
+
+AMPAR_12(Anchor{PSD},S880{u},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{PSD},S880{u},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_off
+AMPAR_12(Anchor{X},S880{u},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{X},S880{u},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_off
+
+AMPAR_12(Anchor{endo},S880{u},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{endo},S880{u},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_off
+
+AMPAR_23(S880{u},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_23(S880{u},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_off
+
+AMPAR_12(Anchor{PSD},S880{p},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{PSD},S880{p},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_offPS
+AMPAR_12(Anchor{X},S880{p},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{X},S880{p},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_offPS
+
+AMPAR_12(Anchor{endo},S880{p},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_12(Anchor{endo},S880{u},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_offPS
+
+AMPAR_23(S880{p},pick1[.],grip[.],nsf[.]),GRIP(ampa[.]) <-> AMPAR_23(S880{p},pick1[.],grip[1],nsf[.]),GRIP(ampa[1]) @ ampar_grip_on,ampar_grip_offPS
+
+
+AMPAR_12(pick1[.],grip[.],nsf[.]),PICK1(ampa[.]) <-> AMPAR_12(pick1[1],grip[.],nsf[.]),PICK1(ampa[1]) @ ampar_pick_on,ampar_pick_off
+AMPAR_23(pick1[.],grip[.],nsf[.]),PICK1(ampa[.]) <-> AMPAR_23(pick1[1],grip[.],nsf[.]),PICK1(ampa[1]) @ ampar_pick_on,ampar_pick_off
+
+AMPAR_12(pick1[.],grip[.],nsf[.]),PICK1(ampa[.],pkc[1]),PKC(pick1[1],Calcium{c3}) <-> AMPAR_12(pick1[2],grip[.],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(pick1[1],Calcium{c3}) @ ampar_pick_onstar,ampar_pick_off
+AMPAR_23(pick1[.],grip[.],nsf[.]),PICK1(ampa[.],pkc[1]),PKC(pick1[1],Calcium{c3}) <-> AMPAR_23(pick1[2],grip[.],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(pick1[1],Calcium{c3}) @ ampar_pick_onstar,ampar_pick_off
+
+
+
+AMPAR_12(pick1[.],grip[1],nsf[.]),GRIP(ampa[1]),PICK1(ampa[.]) <-> AMPAR_12(pick1[2],grip[1],nsf[.]),GRIP(ampa[1]),PICK1(ampa[2]) @ grip_pick_on,grip_pick_off
+AMPAR_23(pick1[.],grip[1],nsf[.]),GRIP(ampa[1]),PICK1(ampa[.]) <-> AMPAR_23(pick1[2],grip[1],nsf[.]),GRIP(ampa[1]),PICK1(ampa[2]) @ grip_pick_on,grip_pick_off
+
+
+
+AMPAR_12(pick1[2/.],grip[1/.],nsf[.]),GRIP(ampa[1/.]),PICK1(ampa[2/.]) @ ampar_grip_off
+AMPAR_23(pick1[2/.],grip[1/.],nsf[.]),GRIP(ampa[1/.]),PICK1(ampa[2/.]) @ ampar_grip_off
+
+
+AMPAR_12(Anchor{endo},pick1[#],grip[.],nsf[.]),NSF(ampa[.]) <-> AMPAR_12(Anchor{endo},pick1[#],grip[.],nsf[1]),NSF(ampa[1]) @ ansf_on,ansf_off
+AMPAR_23(Anchor{endo},pick1[#],grip[.],nsf[.]),NSF(ampa[.]) <-> AMPAR_23(Anchor{endo},pick1[#],grip[.],nsf[1]),NSF(ampa[1]) @ ansf_on,ansf_off
+
+AMPAR_12(Anchor{X},nsf[1/.]),NSF(ampa[1/.]) @ ansf_off
+AMPAR_23(Anchor{X},nsf[1/.]),NSF(ampa[1/.]) @ ansf_off
+
+AMPAR_12(Anchor{PSD},nsf[1/.]),NSF(ampa[1/.]) @ ansf_off
+AMPAR_23(Anchor{PSD},nsf[1/.]),NSF(ampa[1/.]) @ ansf_off
+
+
+//AMPAR LATERAL DIFFUSION (BETWEEN PSD AND X)
+
+AMPAR_12(Anchor{PSD/X},Glu{g0},grip[.],nsf[.]), PSD()+ @ diff_psd_x
+
+AMPAR_23(Anchor{PSD/X},grip[.],nsf[.]), PSD()+ @ diff_psd_x
+
+//AMPAR LATERAL DIFFUSION (BETWEEN X AND PSD)
+
+AMPAR_12(Anchor{X/PSD},grip[.],nsf[.]), PSD()- @ diff_x_psd
+
+
+AMPAR_23(Anchor{X/PSD},grip[.],nsf[.]), PSD()- @ diff_x_psd
+
+
+//PKC REACTIONS
+//Membrane Translocation
+PKC(Location{Endo},Calcium{c0}) <-> PKC(Location{Membrane},Calcium{c0}) @ pkc_to_membrane,pkc_to_endo
+PKC(Location{Endo},Calcium{c1}) <-> PKC(Location{Membrane},Calcium{c1}) @ pkc_to_membrane,pkc_to_endo_ca
+PKC(Location{Endo},Calcium{c2}) <-> PKC(Location{Membrane},Calcium{c2}) @ pkc_to_membrane,pkc_to_endo_2ca
+PKC(Location{Endo},Calcium{c3}) <-> PKC(Location{Membrane},Calcium{c3}) @ pkc_to_membrane,pkc_to_endo_3ca
+
+//Ca binding
+PKC(Location{Endo},Calcium{c0}),Ca() <-> PKC(Location{Endo},Calcium{c1}),. @ pkc_1ca,pkc_ca_off
+PKC(Location{Endo},Calcium{c1}),Ca() <-> PKC(Location{Endo},Calcium{c2}),. @ pkc_23ca,pkc_ca_off
+PKC(Location{Endo},Calcium{c2}),Ca() <-> PKC(Location{Endo},Calcium{c3}),. @ pkc_23ca,pkc_ca_off
+
+
+PKC(Location{Membrane},Calcium{c0}),Ca() <-> PKC(Location{Membrane},Calcium{c1}),. @ pkc_1ca,pkc_ca_off_3
+PKC(Location{Membrane},Calcium{c1}),Ca() <-> PKC(Location{Membrane},Calcium{c2}),. @ pkc_23ca,pkc_ca_off_2
+PKC(Location{Membrane},Calcium{c2}),Ca() <-> PKC(Location{Membrane},Calcium{c3}),. @ pkc_23ca,pkc_ca_off_2
+
+
+PKC(pick1[.],Calcium{c3}),PICK1(pkc[.]) <-> PKC(pick1[1],Calcium{c3}),PICK1(pkc[1]) @ pick_pkc_on,pick_pkc_off
+
+
+//PSD AMPAR
+AMPAR_12(Anchor{PSD},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[.]) <-> AMPAR_12(Anchor{PSD},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{PSD},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_12(Anchor{PSD},Y876{u},S880{u}[.]),PKC(Location{Membrane},pick1[.],Calcium{c3}[.]) <-> AMPAR_12(Anchor{PSD},Y876{u},S880{u}[1]),PKC(Location{Membrane},pick1[.],Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{PSD},Y876{u},S880{u/p}[1/.]),PKC(Location{Membrane},pick1[.],Calcium{c3}[1/.]) @ pkc_k3
+
+AMPAR_23(Anchor{PSD},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[.]) <-> AMPAR_23(Anchor{PSD},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{PSD},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_23(Anchor{PSD},Y876{u},S880{u}[.]),PKC(Location{Membrane},Calcium{c3}[.]) <-> AMPAR_23(Anchor{PSD},Y876{u},S880{u}[1]),PKC(Location{Membrane},Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{PSD},Y876{u},S880{u/p}[1/.]),PKC(Location{Membrane},Calcium{c3}[1/.]) @ pkc_k3
+
+//X AMPAR
+
+AMPAR_12(Anchor{X},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[.]) <-> AMPAR_12(Anchor{X},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{X},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_12(Anchor{X},Y876{u},S880{u}[.]),PKC(Location{Membrane},pick1[.],Calcium{c3}[.]) <-> AMPAR_12(Anchor{X},Y876{u},S880{u}[1]),PKC(Location{Membrane},pick1[.],Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{X},Y876{u},S880{u/p}[1/.]),PKC(Location{Membrane},pick1[.],Calcium{c3}[1/.]) @ pkc_k3
+
+AMPAR_23(Anchor{X},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[.]) <-> AMPAR_23(Anchor{X},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{X},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Membrane},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_23(Anchor{X},Y876{u},S880{u}[.]),PKC(Location{Membrane},Calcium{c3}[.]) <-> AMPAR_23(Anchor{X},Y876{u},S880{u}[1]),PKC(Location{Membrane},Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{X},Y876{u},S880{u/p}[1/.]),PKC(Location{Membrane},Calcium{c3}[1/.]) @ pkc_k3
+
+
+
+
+//Endo AMPAR
+
+AMPAR_12(Anchor{endo},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[.]) <-> AMPAR_12(Anchor{endo},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{endo},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_12(Anchor{endo},Y876{u},S880{u}[.]),PKC(Location{Endo},pick1[.],Calcium{c3}[.]) <-> AMPAR_12(Anchor{endo},Y876{u},S880{u}[1]),PKC(Location{Endo},pick1[.],Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_12(Anchor{endo},Y876{u},S880{u/p}[1/.]),PKC(Location{Endo},pick1[.],Calcium{c3}[1/.]) @ pkc_k3
+
+AMPAR_23(Anchor{endo},Y876{u},S880{u}[.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[.]) <-> AMPAR_23(Anchor{endo},Y876{u},S880{u}[3],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[3]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{endo},Y876{u},S880{u/p}[3/.],pick1[2],grip[_],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(Location{Endo},pick1[1],Calcium{c3}[3/.]) @ pkc_k3
+
+AMPAR_23(Anchor{endo},Y876{u},S880{u}[.]),PKC(Location{Endo},Calcium{c3}[.]) <-> AMPAR_23(Anchor{endo},Y876{u},S880{u}[1]),PKC(Location{Endo},Calcium{c3}[1]) @ pkc_k1,pkc_k2
+AMPAR_23(Anchor{endo},Y876{u},S880{u/p}[1/.]),PKC(Location{Endo},Calcium{c3}[1/.]) @ pkc_k3
+
+
+//S880 DEPHOSPHORYLATION
+
+AMPAR_12(S880{p}[.]),PP2A(b[.]) <-> AMPAR_12(S880{p}[1]),PP2A(b[1]) @ s880_pp2a_k1,s880_pp2a_k2
+AMPAR_12(S880{p/u}[1/.]),PP2A(b[1/.]) @ s880_pp2a_k3
+
+AMPAR_23(S880{p}[.]),PP2A(b[.]) <-> AMPAR_23(S880{p}[1]),PP2A(b[1]) @ s880_pp2a_k1,s880_pp2a_k2
+AMPAR_23(S880{p/u}[1/.]),PP2A(b[1/.]) @ s880_pp2a_k3
+
+//SFK PHOSPHORYLATION OF Y876
+
+AMPAR_12(S880{u},Y876{u}[.]),SFK(b[.]) <-> AMPAR_12(S880{u},Y876{u}[1]),SFK(b[1]) @ sfk_k1,sfk_k2
+AMPAR_12(S880{u},Y876{u/p}[1/.]),SFK(b[1/.]) @ sfk_k3
+
+AMPAR_23(Y876{u}[.]),SFK(b[.]) <-> AMPAR_23(Y876{u}[1]),SFK(b[1]) @ sfk_k1,sfk_k2
+AMPAR_23(Y876{u/p}[1/.]),SFK(b[1/.]) @ sfk_k3
+
+//Y876 DEPHOSPHORYLATION
+
+AMPAR_12(Y876{p}[.]),PTPMEG(b[.]) <-> AMPAR_12(Y876{p}[1]),PTPMEG(b[1]) @ ptpmeg_k1,ptpmeg_k2
+AMPAR_12(Y876{p/u}[1/.]),PTPMEG(b[1/.]) @ ptpmeg_k3
+
+
+AMPAR_23(Y876{p}[.]),PTPMEG(b[.]) <-> AMPAR_23(Y876{p}[1]),PTPMEG(b[1]) @ ptpmeg_k1,ptpmeg_k2
+AMPAR_23(Y876{p/u}[1/.]),PTPMEG(b[1/.]) @ ptpmeg_k3
+
+
+
+//Ubq
+
+//RNF activated by CaMKII
+
+RNF(CK{Inactive}[.],s{u0}),CK(T286{p}[.]) <-> RNF(CK{Inactive}[1],s{u0}),CK(T286{p}[1]) @ RNFCK_assoc, RNFCK_dissoc
+RNF(CK{Inactive/Active}[1/.],s{u0}),CK(T286{p}[1/.]) @ RNF_Activate
+
+//RNF associates with E2_ub to catalyse K870 ubiquitination
+
+E2(s{u1},RNF[.]),RNF(E2[.],s{u0}) <-> E2(s{u1},RNF[1]),RNF(E2[1],s{u0}) @ 'E2 association rate','E2 dissociation rate' //E2_ub associates with RNF
+E2(s{u1/u0},RNF[1/.]),RNF(E2[1/.],s{u0/u1}) @ 'E2 ub transfer rate' //RNF-E2 complex allows ub to be activated for transfer to substrate
+
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K870{u0},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K870{u0},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K870{u0/u1},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K870{u0},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K870{u0},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K870{u0/u1},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+
+AMPAR_12(Anchor{endo},K870{u1}[.])-  @ 'kb' //K870_ub degradation
+
+AMPAR_23(Anchor{endo},K870{u1}[.])-  @ 'kb' //K870_ub degradation
+
+
+//Deubiquitination of K870_ub
+
+AMPAR_12(K870{u1},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K870{u1},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub
+AMPAR_12(K870{u1/u0},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub deubiquitinated to K870
+
+AMPAR_23(K870{u1},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K870{u1},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub
+AMPAR_23(K870{u1/u0},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub deubiquitinated to K870
+
+//Ubiquitination of K870_ub
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_12(K870{u1},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_12(K870{u1},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K870{u1/u2},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_23(K870{u1},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_23(K870{u1},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K870{u1/u2},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_12(Anchor{endo},K870{u2}[.])- @ 'kb' //K870_ub degradation
+
+AMPAR_23(Anchor{endo},K870{u2}[.])- @ 'kb' //K870_ub degradation
+ 
+//Deubiquitination of K870_ub2
+
+AMPAR_12(K870{u2},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K870{u2},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub
+AMPAR_12(K870{u2/u1},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub2 deubiquitinated to K870_ub
+
+AMPAR_23(K870{u2},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K870{u2},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub
+AMPAR_23(K870{u2/u1},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub2 deubiquitinated to K870_ub
+
+
+//Ubiquitination of K870_ub2
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_12(K870{u2},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_12(K870{u2},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K870{u2/u3},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_12(Anchor{endo},K870{u3}[.])- @ 'kb' //K870_ub degradation
+
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_23(K870{u2},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_23(K870{u2},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K870{u2/u3},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_23(Anchor{endo},K870{u3}[.])- @ 'kb' //K870_ub degradation
+
+
+//Deubiquitination of K870_ub3
+
+AMPAR_12(K870{u3},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K870{u3},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub3
+AMPAR_12(K870{u3/u2},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub3 deubiquitinated to K870_ub2
+
+AMPAR_23(K870{u3},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K870{u3},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub3
+AMPAR_23(K870{u3/u2},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub3 deubiquitinated to K870_ub2
+
+//Ubiquitination of K870_ub3
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_12(K870{u3},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_12(K870{u3},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K870{u3/u4},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_12(Anchor{endo},K870{u4}[.])- @ 'kb' //K870_ub degradation
+
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_23(K870{u3},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_23(K870{u3},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K870{u3/u4},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_23(Anchor{endo},K870{u4}[.])- @ 'kb' //K870_ub degradation
+
+//Deubiquitination of K870_ub4
+
+AMPAR_12(K870{u4},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K870{u4},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub4
+AMPAR_12(K870{u4/u3},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub4 deubiquitinated to K870_ub3
+
+AMPAR_23(K870{u4},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K870{u4},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub4
+AMPAR_23(K870{u4/u3},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub4 deubiquitinated to K870_ub3
+
+//Ubiquitination of K870_ub4
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_12(K870{u4},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_12(K870{u4},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K870{u4/u5},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_12(Anchor{endo},K870{u5}[.])- @ 'kb' //K870_ub degradation
+
+RNF(CK{Active},s{u1},AMPAR[.]),AMPAR_23(K870{u4},RNF[.]) <-> RNF(CK{Active},s{u1},AMPAR[1]),AMPAR_23(K870{u4},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K870{u4/u5},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K870
+
+AMPAR_23(Anchor{endo},K870{u5}[.])- @ 'kb' //K870_ub degradation
+
+
+
+//Deubiquitination of K870_ub5
+
+AMPAR_12(K870{u5},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K870{u5},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub5
+AMPAR_12(K870{u5/u4},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub5 deubiquitinated to K870_ub4
+
+AMPAR_23(K870{u5},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K870{u5},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub5
+AMPAR_23(K870{u5/u4},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K870_ub5 deubiquitinated to K870_ub4
+
+
+
+//E1 activates ubiquitin 
+E1(s{u0}) <-> E1(s{u1}) @ 'E1 activation rate','E1 deactivation rate'
+
+
+//Ub transfer from E1 to E2
+E1(s{u1},E2[.]), E2(E1[.],s{u0}) <-> E1(s{u1},E2[1]), E2(E1[1],s{u0}) @ 'E1 association rate','E1 dissociation rate'
+E1(s{u1/u0},E2[1/.]), E2(E1[1/.],s{u0/u1}) @ 'E1 ub transfer rate' //E2 accepts Ub from E1
+
+
+//Ub transfer from E2 to Nedd4
+E2(s{u1},Nedd4[.]), Nedd4(E2[.],s{u0}) <-> E2(s{u1},Nedd4[1]), Nedd4(E2[1],s{u0}) @ 'E2 association rate','E2 dissociation rate' //Nedd4 associates with E2
+E2(s{u1/u0},Nedd4[1/.]), Nedd4(E2[1/.],s{u0/u1}) @ 'E2 ub transfer rate' //Nedd4 accepts Ub from E2
+
+//Nedd4 Activation by Ca
+
+Nedd4(Cdomain{Inactive}[.]),CK(T286{p}[.]) <-> Nedd4(Cdomain{Inactive}[1]),CK(T286{p}[1]) @ Nedd4_assoc, Nedd4_dissoc
+Nedd4(Cdomain{Inactive/Active}[1/.]),CK(T286{p}[1/.]) @ Nedd4_Activate
+
+//K868 ubiquitination rules//
+
+//Nedd4 ubiquitinates K868
+Nedd4(Cdomain{Active},s{u1},AMPAR[.]), AMPAR_12(K868{u0},S845{u},Nedd4[.]) <-> Nedd4(Cdomain{Active},s{u1},AMPAR[1]), AMPAR_12(K868{u0},S845{u},Nedd4[1]) @ 'E3 bind rate','E3 dissociation rate' //Nedd4 associates with AMPAR K868
+Nedd4(Cdomain{Active},s{u1/u0},AMPAR[1/.]), AMPAR_12(K868{u0/u1},Nedd4[1/.]) @ 'kub1' //Nedd4 ubiquitinates AMPAR K868
+
+AMPAR_12(Anchor{endo},K868{u1}[.])- @ 'kb' //K868_ub degradation
+
+
+//K868_ub deubiquitination
+DUB(AMPAR[.]), AMPAR_12(K868{u1},DUB[.]) <-> DUB(AMPAR[1]), AMPAR_12(K868{u1},DUB[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with AMPAR-K868_ub
+DUB(AMPAR[1/.]), AMPAR_12(K868{u1/u0},DUB[1/.]) @ 'kdub' //DUB deubiquitinates AMPAR-K868_ub
+
+
+//Nedd4 ubiquitinates K868_ub
+Nedd4(Cdomain{Active},s{u1},AMPAR[.]), AMPAR_12(K868{u1},S845{u},Nedd4[.]) <-> Nedd4(Cdomain{Active},s{u1},AMPAR[1]), AMPAR_12(K868{u1},S845{u},Nedd4[1]) @ 'E3 bind rate','E3 dissociation rate' //Nedd4 associates with K868-ub
+Nedd4(Cdomain{Active},s{u1/u0},AMPAR[1/.]), AMPAR_12(K868{u1/u2},Nedd4[1/.]) @ 'kub2' //Nedd4 ubiquitinates K868_ub
+
+AMPAR_12(Anchor{endo},K868{u2}[.])- @ 'kb' //K868_ub2 degradation rate
+
+
+//K868_ub2 deubiquitination
+DUB(AMPAR[.]), AMPAR_12(K868{u2},DUB[.]) <-> DUB(AMPAR[1]), AMPAR_12(K868{u2},DUB[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with AMPAR-K868_ub2
+DUB(AMPAR[1/.]), AMPAR_12(K868{u2/u1},DUB[1/.]) @ 'kdub' //DUB deubiquitinates AMPAR-K868_ub2
+
+
+
+//Nedd4 ubiquitinates K868_ub2
+Nedd4(Cdomain{Active},s{u1},AMPAR[.]), AMPAR_12(K868{u2},S845{u},Nedd4[.]) <-> Nedd4(Cdomain{Active},s{u1},AMPAR[1]), AMPAR_12(K868{u2},S845{u},Nedd4[1]) @ 'E3 bind rate','E3 dissociation rate' //Nedd4 associates with K868_ub2
+Nedd4(Cdomain{Active},s{u1/u0},AMPAR[1/.]), AMPAR_12(K868{u2/u3},Nedd4[1/.]) @ 'kub3' //Nedd4 ubiquitinates K868_ub2
+
+AMPAR_12(Anchor{endo},K868{u3}[.])- @ 'kb' //K868_ub3 degradation rate
+
+
+//K868_ub3 deubiquitination
+DUB(AMPAR[.]), AMPAR_12(K868{u3},DUB[.]) <-> DUB(AMPAR[1]), AMPAR_12(K868{u3},DUB[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with AMPAR-K868_ub3
+DUB(AMPAR[1/.]), AMPAR_12(K868{u3/u2},DUB[1/.]) @ 'kdub' //DUB deubiquitinates AMPAR-K868_ub3
+
+
+
+//Nedd4 ubiquitinates K868_ub3
+Nedd4(Cdomain{Active},s{u1},AMPAR[.]), AMPAR_12(K868{u3},S845{u},Nedd4[.]) <-> Nedd4(Cdomain{Active},s{u1},AMPAR[1]), AMPAR_12(K868{u3},S845{u},Nedd4[1]) @ 'E3 bind rate','E3 dissociation rate' //Nedd4 associates with K868_ub3
+Nedd4(Cdomain{Active},s{u1/u0},AMPAR[1/.]), AMPAR_12(K868{u3/u4},Nedd4[1/.]) @ 'kub4' //Nedd4 ubiquitinates K868_ub3
+
+AMPAR_12(Anchor{endo},K868{u4}[.])- @ 'kb' //K868_ub4 degradation rate
+
+
+//K868_ub4 deubiquitination
+DUB(AMPAR[.]), AMPAR_12(K868{u4},DUB[.]) <-> DUB(AMPAR[1]), AMPAR_12(K868{u4},DUB[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with AMPAR-K868_ub4
+DUB(AMPAR[1/.]), AMPAR_12(K868{u4/u3},DUB[1/.]) @ 'kdub' //DUB deubiquitinates AMPAR-K868_ub4
+
+
+
+//Nedd4 ubiquitinates K868_ub4
+Nedd4(Cdomain{Active},s{u1},AMPAR[.]), AMPAR_12(K868{u4},S845{u},Nedd4[.]) <-> Nedd4(Cdomain{Active},s{u1},AMPAR[1]), AMPAR_12(K868{u4},S845{u},Nedd4[1]) @ 'E3 bind rate','E3 dissociation rate' //Nedd4 associates with K868_ub4
+Nedd4(Cdomain{Active},s{u1/u0},AMPAR[1/.]), AMPAR_12(K868{u4/u5},Nedd4[1/.]) @ 'kub5' //Nedd4 ubiquitinates K868_ub4
+
+AMPAR_12(Anchor{endo},K868{u5}[.])- @ 'kd' //K868_ub5 degradation rate
+
+
+//K868_ub5 deubiquitination
+DUB(AMPAR[.]), AMPAR_12(K868{u5},DUB[.]) <-> DUB(AMPAR[1]), AMPAR_12(K868{u5},DUB[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with AMPAR-K868_ub5
+DUB(AMPAR[1/.]), AMPAR_12(K868{u5/u4},DUB[1/.]) @ 'kdub' //DUB deubiquitinates AMPAR-K868_ub5
+
+
+
+
+//RNF associates with E2_ub to catalyse K882 ubiquitination
+
+//E2(s{u1},RNF[.]),RNF(E2[.],s{u0}) <-> E2(s{u1},RNF[1]),RNF(E2[1],s{u0}) @ 'E2 association rate','E2 dissociation rate' //E2_ub associates with RNF
+//E2(s{u1},RNF[1]),RNF(E2[1],s{u0}) -> E2(s{u0},RNF[.]),RNF(E2[.],s{u1}) @ 'E2 ub transfer rate' //RNF-E2 complex allows ub to be activated for transfer to substrate
+
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K882{u0},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K882{u0},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K882{u0/u1},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+
+AMPAR_12(Anchor{endo},K882{u1}[.])- @ 'kb' //K882_ub degradation
+
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K882{u0},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K882{u0},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K882{u0/u1},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+
+AMPAR_23(Anchor{endo},K882{u1}[.])- @ 'kb' //K882_ub degradation
+
+
+//Deubiquitination of K882_ub
+
+AMPAR_12(K882{u1},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K882{u1},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub
+AMPAR_12(K882{u1/u0},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub deubiquitinated to K882
+
+AMPAR_23(K882{u1},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K882{u1},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub
+AMPAR_23(K882{u1/u0},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub deubiquitinated to K882
+
+//Ubiquitination of K882_ub
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K882{u1},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K882{u1},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K882{u1/u2},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_12(Anchor{endo},K882{u2}[.])- @ 'kb' //K882_ub degradation
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K882{u1},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K882{u1},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K882{u1/u2},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_23(Anchor{endo},K882{u2}[.])- @ 'kb' //K882_ub degradation
+
+//Deubiquitination of K882_ub2
+
+AMPAR_12(K882{u2},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K882{u2},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub
+AMPAR_12(K882{u2/u1},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub2 deubiquitinated to K882_ub
+
+AMPAR_23(K882{u2},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K882{u2},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub
+AMPAR_23(K882{u2/u1},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub2 deubiquitinated to K882_ub
+
+//Ubiquitination of K882_ub2
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K882{u2},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K882{u2},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K882{u2/u3},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_12(Anchor{endo},K882{u3}[.])- @ 'kb' //K882_ub degradation
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K882{u2},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K882{u2},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K882{u2/u3},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_23(Anchor{endo},K882{u3}[.])-  @ 'kb' //K882_ub degradation
+
+//Deubiquitination of K882_ub3
+
+AMPAR_12(K882{u3},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K882{u3},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub3
+AMPAR_12(K882{u3/u2},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub3 deubiquitinated to K882_ub2
+
+AMPAR_23(K882{u3},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K882{u3},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub3
+AMPAR_23(K882{u3/u2},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub3 deubiquitinated to K882_ub2
+
+//Ubiquitination of K882_ub3
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K882{u3},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K882{u3},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K882{u3/u4},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_12(Anchor{endo},K882{u4}[.])- @ 'kb' //K882_ub degradation
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K882{u3},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K882{u3},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K882{u3/u4},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_23(Anchor{endo},K882{u4}[.])- @ 'kb' //K882_ub degradation
+
+//Deubiquitination of K882_ub4
+
+AMPAR_12(K882{u4},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K882{u4},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub4
+AMPAR_12(K882{u4/u3},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub4 deubiquitinated to K882_ub3
+
+AMPAR_23(K882{u4},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_23(K882{u4},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K882_ub4
+AMPAR_23(K882{u4/u3},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub4 deubiquitinated to K882_ub3
+
+//Ubiquitination of K882_ub4
+
+RNF(s{u1},AMPAR[.]),AMPAR_12(K882{u4},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_12(K882{u4},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_12(K882{u4/u5},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_12(Anchor{endo},K882{u5}[.])- @ 'kd' //K882_ub degradation
+
+
+RNF(s{u1},AMPAR[.]),AMPAR_23(K882{u4},RNF[.]) <-> RNF(s{u1},AMPAR[1]),AMPAR_23(K882{u4},RNF[1]) @ 'E3 bind rate','E3 dissociation rate' //RNF associates with AMPAR
+RNF(s{u1/u0},AMPAR[1/.]),AMPAR_23(K882{u4/u5},RNF[1/.]) @ 'kub1' //RNF association with AMPAR allows mobilised ub to ubiquitinate K882
+
+AMPAR_23(Anchor{endo},K882{u5}[.])- @ 'kd' //K882_ub degradation
+
+//Deubiquitination of K882_ub5
+
+AMPAR_12(K882{u5},DUB[.]),DUB(AMPAR[.]) <-> AMPAR_12(K882{u5},DUB[1]),DUB(AMPAR[1]) @ 'DUB bind rate','DUB dissociation rate' //DUB associates with K870_ub5
+AMPAR_12(K882{u5/u4},DUB[1/.]),DUB(AMPAR[1/.]) @ 'kdub' //K882_ub5 deubiquitinated to K882_ub4
+
+
+
+
+
+
+//Synth Subunits
+GluA1(b)+ @ 1000/Theta
+GluA2(b)+ @ 1000/Theta
+GluA3(b)+ @ 1000/Theta
+
+GluA1(b[.])-,GluA1(b[.])-,GluA1A1(b)+ @ 1
+    
+GluA1(b[.])-,GluA2(b[.])-,GluA1A2(b)+ @ 1
+    
+GluA2(b[.])-,GluA3(b[.])-,GluA2A3(b)+ @ 1
+    
+    
+GluA1A1(b)-,GluA1A1(b)-,AMPAR_1(S831{u},S845{u},Open{B},Glu{g0},Anchor{endo},K868{u0},DUB,Nedd4)+ @ 1/Theta
+    
+GluA1A2(b)-,GluA1A2(b)-,AMPAR_12(S831{u},S845{u},S880{u},Y876{u},Open{B},Glu{g0},Anchor{endo},K868{u0},K870{u0},K882{u0},DUB,Nedd4,RNF)+ 	@ 3/Theta
+    
+GluA2A3(b)-,GluA2A3(b)-,AMPAR_23(S880{u},Y876{u},Open{B},Glu{g0},K870{u0},K882{u0},DUB,Nedd4,RNF)+ 	@ 3/Theta
+
+

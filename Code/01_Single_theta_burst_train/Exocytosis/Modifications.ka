@@ -1,0 +1,42 @@
+//Calcium dependent cAMP activation
+
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+// %mod: alarm 0.01 [true] do $ADD 10*CaGlu Ca(); repeat [true]
+
+// %mod: 'Glu_Trigger' > 0 do $ADD 5000 Glutamate();
+// %mod: 'Glu_Trigger' = 0 do $DEL |Glutamate()| Glutamate(); repeat [true]
+
+// --------------------------------------------------
+// single TBS train
+// baseline: 0–1 s
+// trigger at T = 1 s
+// 5 bursts × 5 pulses
+// pulse spacing = 0.01 s (100 Hz)
+// burst spacing = 0.2 s (5 Hz)
+// total pulses = 25
+// --------------------------------------------------
+
+// Calcium dependent cAMP activation
+%mod: Calcium_Levels > 10 do $UPDATE cAMP_synth 20; repeat [true]
+%mod: Calcium_Levels < 5 do $UPDATE cAMP_synth 0.5; repeat [true]
+
+// pulse generator: while Burst_on = 1, add one Ca pulse every 0.01 s
+%mod: alarm 0.01 'Burst_on' = 1 do $ADD 60 Ca(); repeat [true]
+
+// sTBS burst windows
+%mod: alarm 1.00 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.05 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.20 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.25 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.40 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.45 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.60 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.65 do $UPDATE 'Burst_on' 0;
+
+%mod: alarm 1.80 do $UPDATE 'Burst_on' 1;
+%mod: alarm 1.85 do $UPDATE 'Burst_on' 0;

@@ -1,0 +1,219 @@
+//Observables
+
+//AMPAR
+
+
+
+
+//Glutamate binding
+ 
+%obs: 'Basal'	|AMPAR_12(Open{B},Anchor{PSD})|
+%obs: 'Small' 	|AMPAR_12(Open{S},Anchor{PSD})|
+%obs: 'Medium' 	|AMPAR_12(Open{M},Anchor{PSD})|
+%obs: 'Large' 	|AMPAR_12(Open{L},Anchor{PSD})|
+
+//%obs: 'Glu_events_total' |Counter()|
+	
+%obs: 'B0'		|AMPAR_12(Open{B},Glu{g0},Anchor{PSD})|
+%obs: 'B1'		|AMPAR_12(Open{B},Glu{g1})|
+%obs: 'B2'		|AMPAR_12(Open{B},Glu{g2})|
+%obs: 'B3'		|AMPAR_12(Open{B},Glu{g3})|
+%obs: 'B4'		|AMPAR_12(Open{B},Glu{g4})|
+	
+%obs: 'S0'		|AMPAR_12(Open{S},Glu{g0},Anchor{PSD})|
+%obs: 'S1'		|AMPAR_12(Open{S},Glu{g1})|
+%obs: 'S2'		|AMPAR_12(Open{S},Glu{g2})|
+%obs: 'S3'		|AMPAR_12(Open{S},Glu{g3})|
+%obs: 'S4'		|AMPAR_12(Open{S},Glu{g4})|
+
+%obs: 'M0'		|AMPAR_12(Open{M},Glu{g0},Anchor{PSD})|
+%obs: 'M1'		|AMPAR_12(Open{M},Glu{g1})|
+%obs: 'M2'		|AMPAR_12(Open{M},Glu{g2})|
+%obs: 'M3'		|AMPAR_12(Open{M},Glu{g3})|
+%obs: 'M4'		|AMPAR_12(Open{M},Glu{g4})|
+
+%obs: 'L0'		|AMPAR_12(Open{L},Glu{g0},Anchor{PSD})|
+%obs: 'L1'		|AMPAR_12(Open{L},Glu{g1})|
+%obs: 'L2'		|AMPAR_12(Open{L},Glu{g2})|
+%obs: 'L3'		|AMPAR_12(Open{L},Glu{g3})|
+%obs: 'L4'		|AMPAR_12(Open{L},Glu{g4})|
+
+	%obs: 'S0_p'		|AMPAR_12(Open{S},Glu{g0},Anchor{PSD},S845{p})|
+	%obs: 'S1_p'		|AMPAR_12(Open{S},Glu{g1},Anchor{PSD},S845{p})|
+	%obs: 'S2_p'		|AMPAR_12(Open{S},Glu{g2},Anchor{PSD},S845{p})|
+	%obs: 'S3_p'		|AMPAR_12(Open{S},Glu{g3},Anchor{PSD},S845{p})|
+	%obs: 'S4_p'		|AMPAR_12(Open{S},Glu{g4},Anchor{PSD},S845{p})|
+	
+	%obs: 'M0_p'		|AMPAR_12(Open{M},Glu{g0},Anchor{PSD},S845{p})|
+	%obs: 'M1_p'		|AMPAR_12(Open{M},Glu{g1},Anchor{PSD},S845{p})|
+	%obs: 'M2_p'		|AMPAR_12(Open{M},Glu{g2},Anchor{PSD},S845{p})|
+	%obs: 'M3_p'		|AMPAR_12(Open{M},Glu{g3},Anchor{PSD},S845{p})|
+	%obs: 'M4_p'		|AMPAR_12(Open{M},Glu{g4},Anchor{PSD},S845{p})|
+
+	%obs: 'L0_p'		|AMPAR_12(Open{L},Glu{g0},Anchor{PSD},S845{p})|
+	%obs: 'L1_p'		|AMPAR_12(Open{L},Glu{g1},Anchor{PSD},S845{p})|
+	%obs: 'L2_p'		|AMPAR_12(Open{L},Glu{g2},Anchor{PSD},S845{p})|
+	%obs: 'L3_p'		|AMPAR_12(Open{L},Glu{g3},Anchor{PSD},S845{p})|
+	%obs: 'L4_p'		|AMPAR_12(Open{L},Glu{g4},Anchor{PSD},S845{p})|
+
+	%obs: 'S0_pp'		|AMPAR_12(Open{S},Glu{g0},Anchor{PSD},S845{pp})|
+	%obs: 'S1_pp'		|AMPAR_12(Open{S},Glu{g1},Anchor{PSD},S845{pp})|
+	%obs: 'S2_pp'		|AMPAR_12(Open{S},Glu{g2},Anchor{PSD},S845{pp})|
+	%obs: 'S3_pp'		|AMPAR_12(Open{S},Glu{g3},Anchor{PSD},S845{pp})|
+	%obs: 'S4_pp'		|AMPAR_12(Open{S},Glu{g4},Anchor{PSD},S845{pp})|
+	
+	%obs: 'M0_pp'		|AMPAR_12(Open{M},Glu{g0},Anchor{PSD},S845{pp})|
+	%obs: 'M1_pp'		|AMPAR_12(Open{M},Glu{g1},Anchor{PSD},S845{pp})|
+	%obs: 'M2_pp'		|AMPAR_12(Open{M},Glu{g2},Anchor{PSD},S845{pp})|
+	%obs: 'M3_pp'		|AMPAR_12(Open{M},Glu{g3},Anchor{PSD},S845{pp})|
+	%obs: 'M4_pp'		|AMPAR_12(Open{M},Glu{g4},Anchor{PSD},S845{pp})|
+
+	%obs: 'L0_pp'		|AMPAR_12(Open{L},Glu{g0},Anchor{PSD},S845{pp})|
+	%obs: 'L1_pp'		|AMPAR_12(Open{L},Glu{g1},Anchor{PSD},S845{pp})|
+	%obs: 'L2_pp'		|AMPAR_12(Open{L},Glu{g2},Anchor{PSD},S845{pp})|
+	%obs: 'L3_pp'		|AMPAR_12(Open{L},Glu{g3},Anchor{PSD},S845{pp})|
+	%obs: 'L4_pp'		|AMPAR_12(Open{L},Glu{g4},Anchor{PSD},S845{pp})|
+
+
+%obs: 'Glu_Trigger'	|Random()|
+%obs: 'Glutamate_level'	|Glutamate()|
+
+
+%obs: CaGlu	(0.015*'S1')+(0.06*'S2')+(0.105*'S3')+(0.15*'S4')+(0.03*'M1')+(0.12*'M2')+(0.21*'M3')+(0.3*'M4')+(0.045*'L1')+(0.18*'L2')+(0.315*'L3')+(0.45*'L4')+1.5*((0.015*'S1_p')+(0.06*'S2_p')+(0.105*'S3_p')+(0.15*'S4_p')+(0.03*'M1_p')+(0.12*'M2_p')+(0.21*'M3_p')+(0.3*'M4_p')+(0.045*'L1_p')+(0.18*'L2_p')+(0.315*'L3_p')+(0.45*'L4_p'))+2*((0.015*'S1_pp')+(0.06*'S2_pp')+(0.105*'S3_pp')+(0.15*'S4_pp')+(0.03*'M1_pp')+(0.12*'M2_pp')+(0.21*'M3_pp')+(0.3*'M4_pp')+(0.045*'L1_pp')+(0.18*'L2_pp')+(0.315*'L3_pp')+(0.45*'L4_pp'))
+
+//%obs: 'g0'	|AMPAR_12(Glu{g0},Anchor{endo})|
+//%obs: 'g1'	|AMPAR_12(Glu{g1},Anchor{endo})|
+//%obs: 'g2'	|AMPAR_12(Glu{g2},Anchor{endo})|
+//%obs: 'g3'	|AMPAR_12(Glu{g3},Anchor{endo})|
+//%obs: 'g4'	|AMPAR_12(Glu{g4},Anchor{endo})|
+
+
+//Phosphorylation
+%obs: 'S831_P'	|AMPAR_12(S831{p},Anchor{PSD})|
+%obs: 'S831_PP'	|AMPAR_12(S831{pp},Anchor{PSD})|
+%obs: 'S831_u'	|AMPAR_12(S831{u},Anchor{PSD})|
+
+%obs: 'S845_P'	|AMPAR_12(S845{p},Anchor{PSD})|
+%obs: 'S845_PP'	|AMPAR_12(S845{pp},Anchor{PSD})|
+%obs: 'S845_u'	|AMPAR_12(S845{u},Anchor{PSD})|
+
+%obs: 'S818_u'	|AMPAR_12(S818{u},Anchor{PSD})|
+%obs: 'S818_p'	|AMPAR_12(S818{p},Anchor{PSD})|
+%obs: 'S818_pp'	|AMPAR_12(S818{pp},Anchor{PSD})|
+
+    
+%obs: I1_P	|I1(Phos{p})|
+%obs: I1_u	|I1(Phos{u})|
+%obs: 'PKA_a'	|PKA(Active{a})|
+%obs: 'PKA_i'	|PKA(Active{i})|
+
+
+%obs: 'Conductance_S845_measure'		'S845_u'+(1.5*'S845_P')+(2*'S845_PP')
+%obs: 'Conductance_S831_measure'		(3*|AMPAR_12(S831{u},Anchor{PSD})|) + (4*|AMPAR_12(S831{p},Anchor{PSD})|) + (8*|AMPAR_12(S831{pp},Anchor{PSD})|)
+  
+%obs: 'Slots'	|PSD()|
+    
+%obs: 'Synaptic_12'	|AMPAR_12(Anchor{PSD})|
+%obs: 'Synaptic_23' |AMPAR_23(Anchor{PSD})|
+%obs: 'Synaptic_receptors'	'Synaptic_12' + 'Synaptic_23'
+
+%obs: 'PP2B'	|CaM(calcium{c4}[1]),CaNAB(calcium{c4}[1])|
+
+//Calcium Signalling
+
+%obs: Calcium_Levels	|Ca()|
+%obs: 'R2C2_total'	|R2C2()|
+%obs: 'cAMP_levels'	|cAMP()|
+%obs: 'Active_CaM'	|CaM(calcium{c4})|
+
+//camkii
+
+%obs: Phos_CK_subunits |CK(T286{p})|
+%obs: Phos_CK_hexamers |CK(a[1],b[2],T286{p}), CK(a[2],b[3],T286{p}), CK(a[3],b[4],T286{p}), CK(a[4],b[5],T286{p}), CK(a[5],b[6],T286{p}), CK(a[6],b[1],T286{p})|/6
+%obs: Free_PP |PP1(b[.])|
+%obs: CaM_CaMKII_C4 |CaM(ck[_],calcium{c4})|
+%obs: CaMKII_CaM |CK(cam[_])|
+%obs: CaM_CaMKII_all |CaM(ck[_])|
+
+//Gallimore
+
+%obs: GRIP_level	|GRIP(ampa[.])|
+%obs: GRIP_total	|GRIP()|
+
+%obs: PICK1_level	|PICK1(ampa[.],pkc[.])|
+%obs: actPKC_level	|PKC(pick1, Calcium{c3})|
+%obs: PKC_membrane	|PKC(Location{Membrane}, Calcium{c3})|
+%obs: PKC_endo		|PKC(Location{Endo}, Calcium{c3})|
+
+
+%obs: PKC_PICK1		|PKC(pick1[1],Calcium{c3}),PICK1(pkc[1])|
+%obs: PKC_PICK1_AMPAR	|AMPAR_12(Y876{u},S880{u}[3],pick1[2],grip[.],nsf[.]),PICK1(ampa[2],pkc[1]),PKC(pick1[1],Calcium{c3}[3])|
+%obs: PKC_AMPAR		|AMPAR_12(Y876{u},S880{u}[1]),PKC(pick1[.],Calcium{c3}[1])|
+
+/*%obs: AMPA_GRIP_endo	|AMPAR_12(Anchor{endo},grip[_])|
+%obs: AMPA_GRIP_PSD	|AMPAR_12(Anchor{PSD},grip[_])|
+%obs: AMPA_PICK_endo	|AMPAR_12(Anchor{endo},pick1[_])|
+%obs: AMPA_PICK_PSD	|AMPAR_12(Anchor{PSD},pick1[_])|
+%obs: AMPA_NSF		|AMPAR_12(nsf[_])|
+%obs: AMPA_GRIP_PICK_endo	|AMPAR_12(Anchor{endo},grip[_],pick1[_])|
+%obs: AMPA_GRIP_PICK_PSD	|AMPAR_12(Anchor{PSD},grip[_],pick1[_])|*/
+
+%obs: AMPA_S880_membrane		|AMPAR_12(S880{p},Anchor{PSD})| + |AMPAR_12(S880{p},Anchor{X})| + |AMPAR_12(S880{p},Anchor{EZ})|
+%obs: AMPA_Y876_membrane		|AMPAR_12(Y876{p},Anchor{PSD})| + |AMPAR_12(Y876{p},Anchor{X})| + |AMPAR_12(Y876{p},Anchor{EZ})|
+
+%obs: AMPA_PSD		|AMPAR_12(Anchor{PSD})|
+%obs: AMPA_mPSD		|AMPAR_12(Anchor{PSD},grip[.])|
+%obs: AMPA_mX		|AMPAR_12(Anchor{X},grip[.])|
+%obs: AMPA_mEZ		|AMPAR_12(Anchor{EZ},grip[.])|
+
+%obs: AMPA_X		|AMPAR_12(Anchor{X})|
+%obs: AMPA_EZ		|AMPAR_12(Anchor{EZ})|
+%obs: AMPA_endo		|AMPAR_12(Anchor{endo})|
+
+
+%obs: AMPA_membrane	'AMPA_PSD' + 'AMPA_X' + 'AMPA_EZ'
+%obs: AMPA_mobile	'AMPA_mPSD' + 'AMPA_mX' + 'AMPA_mEZ'
+
+//Ubq
+
+
+%obs: 'K868' |AMPAR_12(K868{u0})|
+%obs: 'K868_ub' |AMPAR_12(K868{u1})|
+%obs: 'K868_ub2' |AMPAR_12(K868{u2})|
+%obs: 'K868_ub3' |AMPAR_12(K868{u3})|
+%obs: 'K868_ub4' |AMPAR_12(K868{u4})|
+%obs: 'K868_ub5' |AMPAR_12(K868{u5})|
+
+
+%obs: '12K870_ub' |AMPAR_12(K870{u1})|
+%obs: '12K870_ub2' |AMPAR_12(K870{u2})|
+%obs: '12K870_ub3' |AMPAR_12(K870{u3})|
+%obs: '12K870_ub4' |AMPAR_12(K870{u4})|
+%obs: '12K870_ub5' |AMPAR_12(K870{u5})|
+
+
+%obs: '23K870_ub' |AMPAR_23(K870{u1})|
+%obs: '23K870_ub2' |AMPAR_23(K870{u2})|
+%obs: '23K870_ub3' |AMPAR_23(K870{u3})|
+%obs: '23K870_ub4' |AMPAR_23(K870{u4})|
+%obs: '23K870_ub5' |AMPAR_23(K870{u5})|
+
+
+%obs: '12K882_ub' |AMPAR_12(K882{u1})|
+%obs: '12K882_ub2' |AMPAR_12(K882{u2})|
+%obs: '12K882_ub3' |AMPAR_12(K882{u3})|
+%obs: '12K882_ub4' |AMPAR_12(K882{u4})|
+%obs: '12K882_ub5' |AMPAR_12(K882{u5})|
+
+
+%obs: '23K882_ub' |AMPAR_23(K882{u1})|
+%obs: '23K882_ub2' |AMPAR_23(K882{u2})|
+%obs: '23K882_ub3' |AMPAR_23(K882{u3})|
+%obs: '23K882_ub4' |AMPAR_23(K882{u4})|
+%obs: '23K882_ub5' |AMPAR_23(K882{u5})|
+
+//AMPAR totals
+    
+%obs: 'AMPAR1'	|AMPAR_1()|
+%obs: 'AMPAR12'	|AMPAR_12()|
+%obs: 'AMPAR23'	|AMPAR_23()|

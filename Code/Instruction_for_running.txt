@@ -1,0 +1,54 @@
+Copy the all files in the "Code" folder to the xxxxx\Kappa\KappappWin\resources\ downloaded from https://kappalanguage.org/
+Then specify the route to:
+cd .\Kappa\KappappWin\resources\
+
+### siTBS
+# Exocytosis model
+.\bin\KaSim.exe -i .\01_Single_theta_burst_train\Exocytosis\Agents.ka -i .\01_Single_theta_burst_train\Exocytosis\Variables.ka -i .\01_Single_theta_burst_train\Exocytosis\8020.ka -i .\01_Single_theta_burst_train\Exocytosis\Rules.ka -i .\01_Single_theta_burst_train\Exocytosis\Observables.ka -i .\01_Single_theta_burst_train\Exocytosis\Modifications.ka -l 5 -p 0.0001 -o 01_sTBS_Exocytosis_result_v01.csv
+
+# Receptor model
+.\bin\KaSim.exe -i .\01_Single_theta_burst_train\Receptor\Agents.ka -i .\01_Single_theta_burst_train\Receptor\Variables.ka -i .\01_Single_theta_burst_train\Receptor\8020.ka -i .\01_Single_theta_burst_train\Receptor\Rules.ka -i .\01_Single_theta_burst_train\Receptor\Observables.ka -i .\01_Single_theta_burst_train\Receptor\Modifications.ka -l 5 -p 0.0001 -o 01_sTBS_Receptor_result_v01.csv
+
+
+# Slot model
+.\bin\KaSim.exe -i .\01_Single_theta_burst_train\Slot\Agents.ka -i .\01_Single_theta_burst_train\Slot\Variables.ka -i .\01_Single_theta_burst_train\Slot\8020.ka -i .\01_Single_theta_burst_train\Slot\Rules.ka -i .\01_Single_theta_burst_train\Slot\Observables.ka -i .\01_Single_theta_burst_train\Slot\Modifications.ka -l 5 -p 0.0001 -o 01_sTBS_Slot_result_v01.csv
+
+
+### Run cTBS
+# Exocytosis model
+.\bin\KaSim.exe -i .\02_Compressed_theta_burst\Exocytosis\Agents.ka -i .\02_Compressed_Theta_Burst\Exocytosis\Variables.ka -i .\02_Compressed_Theta_Burst\Exocytosis\8020.ka -i .\02_Compressed_Theta_Burst\Exocytosis\Rules.ka -i .\02_Compressed_Theta_Burst\Exocytosis\Observables.ka -i .\02_Compressed_Theta_Burst\Exocytosis\Modifications.ka -l 27 -p 0.0001 -o 02_cTBS_Exocytosis_result_v01.csv
+
+# Receptor model
+.\bin\KaSim.exe -i .\02_Compressed_theta_burst\Receptor\Agents.ka -i .\02_Compressed_Theta_Burst\Receptor\Variables.ka -i .\02_Compressed_Theta_Burst\Receptor\8020.ka -i .\02_Compressed_Theta_Burst\Receptor\Rules.ka -i .\02_Compressed_Theta_Burst\Receptor\Observables.ka -i .\02_Compressed_Theta_Burst\Receptor\Modifications.ka -l 27 -p 0.0001 -o 02_cTBS_Receptor_result_v01.csv
+
+# Slot model
+.\bin\KaSim.exe -i .\02_Compressed_theta_burst\Slot\Agents.ka -i .\02_Compressed_Theta_Burst\Slot\Variables.ka -i .\02_Compressed_Theta_Burst\Slot\8020.ka -i .\02_Compressed_Theta_Burst\Slot\Rules.ka -i .\02_Compressed_Theta_Burst\Slot\Observables.ka -i .\02_Compressed_Theta_Burst\Slot\Modifications.ka -l 27 -p 0.0001 -o 02_cTBS_Slot_result_v01.csv
+
+### Spaced TBS
+# Exocytosis model
+.\bin\KaSim.exe -i .\03_Spaced_theta_burst\Exocytosis\Agents.ka -i .\03_Spaced_Theta_Burst\Exocytosis\Variables.ka -i .\03_Spaced_Theta_Burst\Exocytosis\8020.ka -i .\03_Spaced_Theta_Burst\Exocytosis\Rules.ka -i .\03_Spaced_Theta_Burst\Exocytosis\Observables.ka -i .\03_Spaced_Theta_Burst\Exocytosis\Modifications.ka -l 1220 -p 0.005 -o 03_Spaced_TBS_Exocytosis_result_v01.csv
+
+# Receptor model
+.\bin\KaSim.exe -i .\03_Spaced_theta_burst\Receptor\Agents.ka -i .\03_Spaced_Theta_Burst\Receptor\Variables.ka -i .\03_Spaced_Theta_Burst\Receptor\8020.ka -i .\03_Spaced_Theta_Burst\Receptor\Rules.ka -i .\03_Spaced_Theta_Burst\Receptor\Observables.ka -i .\03_Spaced_Theta_Burst\Receptor\Modifications.ka -l 1220 -p 0.005 -o 03_Spaced_TBS_Receptor_result_v01.csv
+
+# Slot model
+.\bin\KaSim.exe -i .\03_Spaced_theta_burst\Receptor\Agents.ka -i .\03_Spaced_Theta_Burst\Receptor\Variables.ka -i .\03_Spaced_Theta_Burst\Receptor\8020.ka -i .\03_Spaced_Theta_Burst\Receptor\Rules.ka -i .\03_Spaced_Theta_Burst\Receptor\Observables.ka -i .\03_Spaced_Theta_Burst\Receptor\Modifications.ka -l 1220 -p 0.005 -o 03_Spaced_TBS_Receptor_result_v01.csv
+
+### wLTP stimulation
+# Exocytosis
+.\bin\KaSim.exe -i .\04_wLTP_burst\Exocytosis\Agents.ka -i .\04_wLTP_burst\Exocytosis\Variables.ka -i .\04_wLTP_burst\Exocytosis\8020.ka -i .\04_wLTP_burst\Exocytosis\Rules.ka -i .\04_wLTP_burst\Exocytosis\Observables.ka -i .\04_wLTP_burst\Exocytosis\Modifications.ka -l 90 -p 0.0001 -o 04_wLTP_Exocytosis_result_v01.csv
+
+# Receptor model
+.\bin\KaSim.exe -i .\04_wLTP_burst\Receptor\Agents.ka -i .\04_wLTP_burst\Receptor\Variables.ka -i .\04_wLTP_burst\Receptor\8020.ka -i .\04_wLTP_burst\Receptor\Rules.ka -i .\04_wLTP_burst\Receptor\Observables.ka -i .\04_wLTP_burst\Receptor\Modifications.ka -l 90 -p 0.0001 -o 04_wLTP_Receptor_result_v01.csv
+
+# Slot model
+.\bin\KaSim.exe -i .\04_wLTP_burst\Slot\Agents.ka -i .\04_wLTP_burst\Slot\Variables.ka -i .\04_wLTP_burst\Slot\8020.ka -i .\04_wLTP_burst\Slot\Rules.ka -i .\04_wLTP_burst\Slot\Observables.ka -i .\04_wLTP_burst\Slot\Modifications.ka -l 90 -p 0.0001 -o 04_wLTP_Slot_result_v01.csv
+
+### HFS stimulation
+.\bin\KaSim.exe -i .\05_HFS\Exocytosis\Agents.ka -i .\05_HFS\Exocytosis\Variables.ka -i .\05_HFS\Exocytosis\8020.ka -i .\05_HFS\Exocytosis\Rules.ka -i .\05_HFS\Exocytosis\Observables.ka -i .\05_HFS\Exocytosis\Modifications.ka -l 10 -p 0.0001 -o 05_HFS_Exocytosis_result_v01.csv
+
+.\bin\KaSim.exe -i .\05_HFS\Receptor\Agents.ka -i .\05_HFS\Receptor\Variables.ka -i .\05_HFS\Receptor\8020.ka -i .\05_HFS\Receptor\Rules.ka -i .\05_HFS\Receptor\Observables.ka -i .\05_HFS\Receptor\Modifications.ka -l 10 -p 0.0001 -o 05_HFS_Receptor_result_v01.csv
+
+.\bin\KaSim.exe -i .\05_HFS\Slot\Agents.ka -i .\05_HFS\Slot\Variables.ka -i .\05_HFS\Slot\8020.ka -i .\05_HFS\Slot\Rules.ka -i .\05_HFS\Slot\Observables.ka -i .\05_HFS\Slot\Modifications.ka -l 10 -p 0.0001 -o 05_HFS_Slot_result_v01.csv
+
+Then you can get the csv files containing the same results as the csv files in the /Results folder in github.

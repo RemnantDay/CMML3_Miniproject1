@@ -1,0 +1,50 @@
+//Initialisation
+
+%init: Basal_12			AMPAR_12(S831{u},S845{u},S880{u},Y876{u},S818{u},Open{B},Glu{g0},Anchor{X},K868{u0},K870{u0},K882{u0},pick1[.],grip[.],nsf[.])
+%init: Basal_23			AMPAR_23(S880{u},Y876{u},Open{B},Glu{g0},Anchor{X},K870{u0},K882{u0},pick1[.],grip[.],nsf[.])
+%init: 12			AMPAR_12(S831{u},S845{u},S880{u},Y876{u},S818{u},Open{B},Glu{g0},Anchor{PSD},K868{u0},K870{u0},K882{u0},pick1[.],grip[.],nsf[.])
+%init: 3			AMPAR_23(S880{u},Y876{u},Open{B},Glu{g0},Anchor{PSD},K870{u0},K882{u0},pick1[.],grip[.],nsf[.])
+
+%init: Glu 			Glutamate()
+%init: 0			Random()
+%init: PP1			PP1(b)
+%init: PP2A			PP2A(b)					
+%init: 108			I1(Phos{u},b)																		
+%init: PKA			PKA(b,Active{i})
+%init: PSD_slots	PSD()
+
+
+
+%init: 10	cAMP()
+%init: 30	R2C2(cAMP{c0},C{c2})
+%init: 15	PKA_Inhibitor(b)
+%init: 1586	CaM(calcium{c0})
+%init: 5	Ca()
+%init: 60	CaNAB(b,calcium{c0})
+
+
+
+%init: 500 CK(a[1],b[2],c[13]), CK(a[2],b[3],c[14]), CK(a[3],b[4],c[15]), CK(a[4],b[5],c[16]), CK(a[5],b[6],c[17]), CK(a[6],b[1],c[18]),CK(a[7],b[8],d[13]), CK(a[8],b[9],d[14]), CK(a[9],b[10],d[15]), CK(a[10],b[11],d[16]), CK(a[11],b[12],d[17]), CK(a[12],b[7],d[18])
+
+
+
+%init: GRIP		GRIP(ampa)
+%init: PICK1	PICK1(ampa,pkc)
+%init: PKC		PKC(pick1, Calcium{c0})
+%init: NSF		NSF(ampa)
+%init: SFK 		SFK(b)
+%init: PTPMEG	PTPMEG(b)
+
+
+
+%init: 18 	RNF (CK{Inactive},s{u0})
+%init: 180 	E1()
+%init: 180 	E2()
+%init: 18 	Nedd4(Cdomain{Inactive},s{u0})
+%init: 18 	DUB ()
+
+
+
+%init: 500		GluA1(b),GluA2(b)
+%init: 200		GluA3(b)
+%init: 0 		GluA1A1(b),GluA1A2(b),GluA2A3(b)
