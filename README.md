@@ -1,8 +1,11 @@
-# 
+# A Rule-Based Modeling Approach for Studying AMPA Receptors at the Synapse
 
-### Overview
+## Introduction of the repository
 
-### Repository structure
+
+## Overview
+
+## Repository structure and file explanation
 ```
 ├─Code
 │  ├─00_Original_Model
